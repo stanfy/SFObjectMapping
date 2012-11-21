@@ -8,7 +8,7 @@
 
 #import <objc/runtime.h>
 #import "SFMappingCore.h"
-#import <StanfyCore/SFRuntime.h>
+#import "SFMappingRuntime.h"
 #import "NSObject+SFMapping.h"
 #import "SFMapping.h"
 
@@ -72,7 +72,7 @@ Returns array fo
 
             // Resolving by property type
             if (!propertyClassOrStructName) {
-               propertyClassOrStructName = [SFRuntime typeForProperty:[mapping property] ofClass:[object class]];
+               propertyClassOrStructName = [SFMappingRuntime typeForProperty:[mapping property] ofClass:[object class]];
                mapping.classString = propertyClassOrStructName;
             }
 
