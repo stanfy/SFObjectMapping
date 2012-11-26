@@ -191,6 +191,9 @@ Returns array fo
    if (objectClass == [NSString class] && sourceObject && [sourceObject isKindOfClass:[NSString class]]) {
       return sourceObject;
    }
+   if (objectClass == [NSNumber class] && sourceObject && [sourceObject isKindOfClass:[NSNumber class]]) {
+      return sourceObject;
+   }
 
    // Create new instance
    id instance = [objectClass new];
