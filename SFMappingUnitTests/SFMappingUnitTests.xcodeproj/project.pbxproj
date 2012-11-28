@@ -12,7 +12,6 @@
 		792EB773166645890043F12F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792EB772166645890043F12F /* CoreGraphics.framework */; };
 		792EB779166645890043F12F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 792EB777166645890043F12F /* InfoPlist.strings */; };
 		792EB77B166645890043F12F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB77A166645890043F12F /* main.m */; };
-		792EB7801666458A0043F12F /* ExampleSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 792EB77F1666458A0043F12F /* ExampleSpec.mm */; };
 		792EB791166645FF0043F12F /* NSObject+SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB788166645FF0043F12F /* NSObject+SFMapping.m */; };
 		792EB792166645FF0043F12F /* SFMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB78A166645FF0043F12F /* SFMapper.m */; };
 		792EB793166645FF0043F12F /* SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB78C166645FF0043F12F /* SFMapping.m */; };
@@ -30,7 +29,6 @@
 		792EB778166645890043F12F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		792EB77A166645890043F12F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		792EB77C166645890043F12F /* SFMappingUnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SFMappingUnitTests-Prefix.pch"; sourceTree = "<group>"; };
-		792EB77F1666458A0043F12F /* ExampleSpec.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = ExampleSpec.mm; path = SFMappingUnitTests/ExampleSpec.mm; sourceTree = "<group>"; };
 		792EB787166645FF0043F12F /* NSObject+SFMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SFMapping.h"; path = "../Classes/NSObject+SFMapping.h"; sourceTree = "<group>"; };
 		792EB788166645FF0043F12F /* NSObject+SFMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SFMapping.m"; path = "../Classes/NSObject+SFMapping.m"; sourceTree = "<group>"; };
 		792EB789166645FF0043F12F /* SFMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFMapper.h; path = ../Classes/SFMapper.h; sourceTree = "<group>"; };
@@ -128,9 +126,8 @@
 		792EB796166646100043F12F /* Specs */ = {
 			isa = PBXGroup;
 			children = (
-				792EB77F1666458A0043F12F /* ExampleSpec.mm */,
 			);
-			name = Specs;
+			path = Specs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,7 +193,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				792EB77B166645890043F12F /* main.m in Sources */,
-				792EB7801666458A0043F12F /* ExampleSpec.mm in Sources */,
 				792EB791166645FF0043F12F /* NSObject+SFMapping.m in Sources */,
 				792EB792166645FF0043F12F /* SFMapper.m in Sources */,
 				792EB793166645FF0043F12F /* SFMapping.m in Sources */,
