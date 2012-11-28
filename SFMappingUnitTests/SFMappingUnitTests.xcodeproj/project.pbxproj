@@ -18,6 +18,8 @@
 		792EB794166645FF0043F12F /* SFMappingCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB78E166645FF0043F12F /* SFMappingCore.m */; };
 		792EB795166645FF0043F12F /* SFMappingRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB790166645FF0043F12F /* SFMappingRuntime.m */; };
 		792EB79D1666485F0043F12F /* Cedar-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792EB79C1666485F0043F12F /* Cedar-iOS.framework */; };
+		792EB7D1166651680043F12F /* SFMappingRuntimeSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 792EB7D0166651680043F12F /* SFMappingRuntimeSpec.mm */; };
+		792EB7D6166654E80043F12F /* TestProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB7D5166654E80043F12F /* TestProperty.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,9 @@
 		792EB78F166645FF0043F12F /* SFMappingRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFMappingRuntime.h; path = ../Classes/SFMappingRuntime.h; sourceTree = "<group>"; };
 		792EB790166645FF0043F12F /* SFMappingRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFMappingRuntime.m; path = ../Classes/SFMappingRuntime.m; sourceTree = "<group>"; };
 		792EB79C1666485F0043F12F /* Cedar-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Cedar-iOS.framework"; path = "../../cedar/build/Release-iphoneuniversal/Cedar-iOS.framework"; sourceTree = "<group>"; };
+		792EB7D0166651680043F12F /* SFMappingRuntimeSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFMappingRuntimeSpec.mm; sourceTree = "<group>"; };
+		792EB7D4166654E80043F12F /* TestProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestProperty.h; sourceTree = "<group>"; };
+		792EB7D5166654E80043F12F /* TestProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestProperty.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 		792EB75F166645890043F12F = {
 			isa = PBXGroup;
 			children = (
+				792EB7D2166654050043F12F /* Test Data */,
 				792EB796166646100043F12F /* Specs */,
 				792EB786166645EC0043F12F /* Core */,
 				792EB774166645890043F12F /* SFMappingUnitTests */,
@@ -126,8 +132,27 @@
 		792EB796166646100043F12F /* Specs */ = {
 			isa = PBXGroup;
 			children = (
+				792EB7D0166651680043F12F /* SFMappingRuntimeSpec.mm */,
 			);
 			path = Specs;
+			sourceTree = "<group>";
+		};
+		792EB7D2166654050043F12F /* Test Data */ = {
+			isa = PBXGroup;
+			children = (
+				792EB7D3166654BF0043F12F /* Classes */,
+			);
+			name = "Test Data";
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		792EB7D3166654BF0043F12F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				792EB7D4166654E80043F12F /* TestProperty.h */,
+				792EB7D5166654E80043F12F /* TestProperty.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +223,8 @@
 				792EB793166645FF0043F12F /* SFMapping.m in Sources */,
 				792EB794166645FF0043F12F /* SFMappingCore.m in Sources */,
 				792EB795166645FF0043F12F /* SFMappingRuntime.m in Sources */,
+				792EB7D1166651680043F12F /* SFMappingRuntimeSpec.mm in Sources */,
+				792EB7D6166654E80043F12F /* TestProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
