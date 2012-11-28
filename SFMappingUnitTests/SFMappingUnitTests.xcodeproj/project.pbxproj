@@ -1,0 +1,338 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		792EB76F166645890043F12F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792EB76E166645890043F12F /* UIKit.framework */; };
+		792EB771166645890043F12F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792EB770166645890043F12F /* Foundation.framework */; };
+		792EB773166645890043F12F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792EB772166645890043F12F /* CoreGraphics.framework */; };
+		792EB779166645890043F12F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 792EB777166645890043F12F /* InfoPlist.strings */; };
+		792EB77B166645890043F12F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB77A166645890043F12F /* main.m */; };
+		792EB7801666458A0043F12F /* ExampleSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 792EB77F1666458A0043F12F /* ExampleSpec.mm */; };
+		792EB791166645FF0043F12F /* NSObject+SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB788166645FF0043F12F /* NSObject+SFMapping.m */; };
+		792EB792166645FF0043F12F /* SFMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB78A166645FF0043F12F /* SFMapper.m */; };
+		792EB793166645FF0043F12F /* SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB78C166645FF0043F12F /* SFMapping.m */; };
+		792EB794166645FF0043F12F /* SFMappingCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB78E166645FF0043F12F /* SFMappingCore.m */; };
+		792EB795166645FF0043F12F /* SFMappingRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EB790166645FF0043F12F /* SFMappingRuntime.m */; };
+		792EB79D1666485F0043F12F /* Cedar-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792EB79C1666485F0043F12F /* Cedar-iOS.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		792EB76A166645890043F12F /* SFMappingUnitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFMappingUnitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		792EB76E166645890043F12F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		792EB770166645890043F12F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		792EB772166645890043F12F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		792EB776166645890043F12F /* SFMappingUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SFMappingUnitTests-Info.plist"; sourceTree = "<group>"; };
+		792EB778166645890043F12F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		792EB77A166645890043F12F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		792EB77C166645890043F12F /* SFMappingUnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SFMappingUnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		792EB77F1666458A0043F12F /* ExampleSpec.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = ExampleSpec.mm; path = SFMappingUnitTests/ExampleSpec.mm; sourceTree = "<group>"; };
+		792EB787166645FF0043F12F /* NSObject+SFMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SFMapping.h"; path = "../Classes/NSObject+SFMapping.h"; sourceTree = "<group>"; };
+		792EB788166645FF0043F12F /* NSObject+SFMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SFMapping.m"; path = "../Classes/NSObject+SFMapping.m"; sourceTree = "<group>"; };
+		792EB789166645FF0043F12F /* SFMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFMapper.h; path = ../Classes/SFMapper.h; sourceTree = "<group>"; };
+		792EB78A166645FF0043F12F /* SFMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFMapper.m; path = ../Classes/SFMapper.m; sourceTree = "<group>"; };
+		792EB78B166645FF0043F12F /* SFMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFMapping.h; path = ../Classes/SFMapping.h; sourceTree = "<group>"; };
+		792EB78C166645FF0043F12F /* SFMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFMapping.m; path = ../Classes/SFMapping.m; sourceTree = "<group>"; };
+		792EB78D166645FF0043F12F /* SFMappingCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFMappingCore.h; path = ../Classes/SFMappingCore.h; sourceTree = "<group>"; };
+		792EB78E166645FF0043F12F /* SFMappingCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFMappingCore.m; path = ../Classes/SFMappingCore.m; sourceTree = "<group>"; };
+		792EB78F166645FF0043F12F /* SFMappingRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFMappingRuntime.h; path = ../Classes/SFMappingRuntime.h; sourceTree = "<group>"; };
+		792EB790166645FF0043F12F /* SFMappingRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFMappingRuntime.m; path = ../Classes/SFMappingRuntime.m; sourceTree = "<group>"; };
+		792EB79C1666485F0043F12F /* Cedar-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Cedar-iOS.framework"; path = "../../cedar/build/Release-iphoneuniversal/Cedar-iOS.framework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		792EB767166645890043F12F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				792EB79D1666485F0043F12F /* Cedar-iOS.framework in Frameworks */,
+				792EB76F166645890043F12F /* UIKit.framework in Frameworks */,
+				792EB771166645890043F12F /* Foundation.framework in Frameworks */,
+				792EB773166645890043F12F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		792EB75F166645890043F12F = {
+			isa = PBXGroup;
+			children = (
+				792EB796166646100043F12F /* Specs */,
+				792EB786166645EC0043F12F /* Core */,
+				792EB774166645890043F12F /* SFMappingUnitTests */,
+				792EB76D166645890043F12F /* Frameworks */,
+				792EB76B166645890043F12F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		792EB76B166645890043F12F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				792EB76A166645890043F12F /* SFMappingUnitTests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		792EB76D166645890043F12F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				792EB79C1666485F0043F12F /* Cedar-iOS.framework */,
+				792EB76E166645890043F12F /* UIKit.framework */,
+				792EB770166645890043F12F /* Foundation.framework */,
+				792EB772166645890043F12F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		792EB774166645890043F12F /* SFMappingUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				792EB775166645890043F12F /* Supporting Files */,
+			);
+			path = SFMappingUnitTests;
+			sourceTree = "<group>";
+		};
+		792EB775166645890043F12F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				792EB776166645890043F12F /* SFMappingUnitTests-Info.plist */,
+				792EB777166645890043F12F /* InfoPlist.strings */,
+				792EB77A166645890043F12F /* main.m */,
+				792EB77C166645890043F12F /* SFMappingUnitTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		792EB786166645EC0043F12F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				792EB787166645FF0043F12F /* NSObject+SFMapping.h */,
+				792EB788166645FF0043F12F /* NSObject+SFMapping.m */,
+				792EB789166645FF0043F12F /* SFMapper.h */,
+				792EB78A166645FF0043F12F /* SFMapper.m */,
+				792EB78B166645FF0043F12F /* SFMapping.h */,
+				792EB78C166645FF0043F12F /* SFMapping.m */,
+				792EB78D166645FF0043F12F /* SFMappingCore.h */,
+				792EB78E166645FF0043F12F /* SFMappingCore.m */,
+				792EB78F166645FF0043F12F /* SFMappingRuntime.h */,
+				792EB790166645FF0043F12F /* SFMappingRuntime.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		792EB796166646100043F12F /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				792EB77F1666458A0043F12F /* ExampleSpec.mm */,
+			);
+			name = Specs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		792EB769166645890043F12F /* SFMappingUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 792EB7831666458A0043F12F /* Build configuration list for PBXNativeTarget "SFMappingUnitTests" */;
+			buildPhases = (
+				792EB766166645890043F12F /* Sources */,
+				792EB767166645890043F12F /* Frameworks */,
+				792EB768166645890043F12F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SFMappingUnitTests;
+			productName = SFMappingUnitTests;
+			productReference = 792EB76A166645890043F12F /* SFMappingUnitTests.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		792EB761166645890043F12F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = stanfy;
+			};
+			buildConfigurationList = 792EB764166645890043F12F /* Build configuration list for PBXProject "SFMappingUnitTests" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 792EB75F166645890043F12F;
+			productRefGroup = 792EB76B166645890043F12F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				792EB769166645890043F12F /* SFMappingUnitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		792EB768166645890043F12F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				792EB779166645890043F12F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		792EB766166645890043F12F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				792EB77B166645890043F12F /* main.m in Sources */,
+				792EB7801666458A0043F12F /* ExampleSpec.mm in Sources */,
+				792EB791166645FF0043F12F /* NSObject+SFMapping.m in Sources */,
+				792EB792166645FF0043F12F /* SFMapper.m in Sources */,
+				792EB793166645FF0043F12F /* SFMapping.m in Sources */,
+				792EB794166645FF0043F12F /* SFMappingCore.m in Sources */,
+				792EB795166645FF0043F12F /* SFMappingRuntime.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		792EB777166645890043F12F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				792EB778166645890043F12F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		792EB7811666458A0043F12F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		792EB7821666458A0043F12F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		792EB7841666458A0043F12F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SFMappingUnitTests/Frameworks\"",
+					"\"$(SRCROOT)/../../cedar/build/Release-iphoneuniversal\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SFMappingUnitTests/SFMappingUnitTests-Prefix.pch";
+				INFOPLIST_FILE = "SFMappingUnitTests/SFMappingUnitTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-lstdc++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		792EB7851666458A0043F12F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SFMappingUnitTests/Frameworks\"",
+					"\"$(SRCROOT)/../../cedar/build/Release-iphoneuniversal\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SFMappingUnitTests/SFMappingUnitTests-Prefix.pch";
+				INFOPLIST_FILE = "SFMappingUnitTests/SFMappingUnitTests-Info.plist";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-lstdc++",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		792EB764166645890043F12F /* Build configuration list for PBXProject "SFMappingUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				792EB7811666458A0043F12F /* Debug */,
+				792EB7821666458A0043F12F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		792EB7831666458A0043F12F /* Build configuration list for PBXNativeTarget "SFMappingUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				792EB7841666458A0043F12F /* Debug */,
+				792EB7851666458A0043F12F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 792EB761166645890043F12F /* Project object */;
+}
