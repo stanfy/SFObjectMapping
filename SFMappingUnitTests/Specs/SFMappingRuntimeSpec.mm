@@ -14,7 +14,7 @@ describe(@"SFMappingRuntime", ^{
       it(@"for Class", ^{
          NSString *propertyType = [SFMappingRuntime typeForProperty:@"stringProperty"
                                                             ofClass:[TestProperty class]];
-         [propertyType isEqualToString:@"NSString"] should be_truthy;
+         propertyType should equal(@"NSString");
       });
       
       context(@"for simple type", ^{
@@ -22,25 +22,25 @@ describe(@"SFMappingRuntime", ^{
          it(@"integer", ^{
             NSString *propertyType = [SFMappingRuntime typeForProperty:@"intProperty"
                                                                ofClass:[TestProperty class]];
-            [propertyType isEqualToString:@"NSNumber"] should be_truthy;
+            propertyType should equal(@"NSNumber");
          });
          
          it(@"real", ^{
             NSString *propertyType = [SFMappingRuntime typeForProperty:@"floatProperty"
                                                                ofClass:[TestProperty class]];
-            [propertyType isEqualToString:@"NSNumber"] should be_truthy;
+            propertyType should equal(@"NSNumber");
          });
          
          it(@"boolean", ^{
             NSString *propertyType = [SFMappingRuntime typeForProperty:@"boolProperty"
                                                                ofClass:[TestProperty class]];
-            [propertyType isEqualToString:@"BOOL"] should be_truthy;
+            propertyType should equal(@"BOOL");
          });
          
          it(@"struct", ^{
             NSString *propertyType = [SFMappingRuntime typeForProperty:@"rectProperty"
                                                                ofClass:[TestProperty class]];
-            [propertyType isEqualToString:@"CGRect"] should be_truthy;
+            propertyType should equal(@"CGRect");
          });
          
       });
