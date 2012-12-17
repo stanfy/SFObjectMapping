@@ -1,1 +1,2 @@
-ios_ci cedar --source-root ./SFMappingUnitTests --target=SFMappingUnitTests
+cd SFMappingUnitTests
+ios_ci cedar --source-root "`pwd`" --target=SFMappingUnitTests

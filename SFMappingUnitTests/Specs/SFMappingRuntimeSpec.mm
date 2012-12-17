@@ -22,7 +22,7 @@ describe(@"SFMappingRuntime", ^{
          it(@"integer", ^{
             NSString *propertyType = [SFMappingRuntime typeForProperty:@"intProperty"
                                                                ofClass:[TestProperty class]];
-            propertyType should equal(@"NSNumber");
+            propertyType should_not equal(@"NSNumber");
          });
          
          it(@"real", ^{
