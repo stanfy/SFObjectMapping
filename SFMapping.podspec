@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.author       = { 'Paul Taykalo' => 'ptaykalo@stanfy.com.ua' }
 
-  s.source       = { :git => 'ssh://git@dev.stanfy.com:8822/object-mapping-ios.git', :tag => '0.0.1' }
+  s.source       = { :git => 'ssh://git@dev.stanfy.com:8822/object-mapping-ios.git', :tag => '0.0.2' }
 
   s.platform     = :ios, '4.3'
 
