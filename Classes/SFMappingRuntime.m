@@ -33,12 +33,18 @@
     }
     
     NSString *attributesString = [NSString stringWithUTF8String:attributes];
-    NSLog(@"Property : %@, AttributesString : %@", property, attributesString);
     
     // Class
     if ([attributesString hasPrefix:@"T@\""]) {
         int commaLocation = [attributesString rangeOfString:@","].location;
         NSString *name = [attributesString substringWithRange:NSMakeRange(3, commaLocation - 4)];
+        return name;
+    }
+    
+    // Another class
+    if ([attributesString hasPrefix:@"@\""]) {
+        int commaLocation = [attributesString rangeOfString:@","].location;
+        NSString *name = [attributesString substringWithRange:NSMakeRange(2, attributesString.length - 3)];
         return name;
     }
     
@@ -53,11 +59,20 @@
     // Number
     // BOOL == char
     // Tc,N,V_iPadEnabled
-    if ([attributesString hasPrefix:@"Tf"] || [attributesString hasPrefix:@"f"] ||
-        [attributesString hasPrefix:@"Ti"] || [attributesString hasPrefix:@"i"] ||
-        [attributesString hasPrefix:@"Td"] || [attributesString hasPrefix:@"d"] ||
-        [attributesString hasPrefix:@"Ts"] || [attributesString hasPrefix:@"s"])
-    {
+    if ([attributesString hasPrefix:@"Tf"] ||
+        [attributesString hasPrefix:@"Ti"] ||
+        [attributesString hasPrefix:@"Td"] ||
+        [attributesString hasPrefix:@"Tl"] ||
+        [attributesString hasPrefix:@"TI"] ||
+        [attributesString hasPrefix:@"Ts"] ||
+        [attributesString hasPrefix:@"f"] ||
+        [attributesString hasPrefix:@"i"] ||
+        [attributesString hasPrefix:@"d"] ||
+        [attributesString hasPrefix:@"l"] ||
+        [attributesString hasPrefix:@"I"] ||
+        [attributesString hasPrefix:@"s"]
+        
+        ) {
         NSString *name = @"NSNumber";
         return name;
     }
@@ -69,5 +84,4 @@
     
     return nil;
 }
-
 @end
