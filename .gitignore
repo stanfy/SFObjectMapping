@@ -1,6 +1,6 @@
+.DS_Store
 SFMappingUnitTests/SFMappingUnitTests.xcodeproj/xcuserdata
 SFMappingUnitTests/SFMappingUnitTests.xcodeproj/project.xcworkspace/xcuserdata
-.DS_Store
-.idea
+SFMappingUnitTests/.idea
 SFMappingUnitTests/build
 SFMappingUnitTests/test-reports
