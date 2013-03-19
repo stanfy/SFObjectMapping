@@ -3,14 +3,14 @@
 //  Nemlig-iPad
 //
 //  Created by Paul Taykalo on 6/7/12.
-//  Copyright (c) 2012 JBC. All rights reserved.
+//  Copyright (c) 2012 Stanfy LLC. All rights reserved.
 //
 
 #import <objc/runtime.h>
 #import "SFMappingCore.h"
-#import "SFMappingRuntime.h"
 #import "NSObject+SFMapping.h"
 #import "SFMapping.h"
+#import "SFMappingRuntime.h"
 
 @implementation SFMappingCore
 
@@ -106,7 +106,7 @@ static NSMutableDictionary * _mappers;
         [mapper applyMapping:mapping onObject:objinstance withValue:value error:error];
     } else {
         // TODO : Do correct error handling
-        //SFCLog(@"parser", @"Couldnt find method signature for selector : %@ of %@", NSStringFromSelector(mapperSelector), mapper);
+        NSLog(@"Couldnt find method signature for selector : %@ of %@", NSStringFromSelector(mapperSelector), mapper);
     }
 }
 
@@ -130,8 +130,12 @@ static NSMutableDictionary * _mappers;
     
     for (SFMapping * mapping in mappings) {
         
-        
-        id value = [sourceObject valueForKeyPath:mapping.keyPath];
+        id value = nil;
+        if (mapping.keyPath && [mapping.keyPath length]) {
+            value = [sourceObject valueForKeyPath:mapping.keyPath];
+        } else {
+            value = sourceObject;
+        }
         
         // Checking for custom binding custom parsing
         if (mapping.customParser) {
@@ -164,7 +168,7 @@ static NSMutableDictionary * _mappers;
             //TODO : Correct error handling
             [self performMappingWithMapperInfo:mapper mapping:mapping objInstance:destObject value:value error:nil];
         } else {
-            if (sourceObject) {
+            if (sourceObject && value && value != [NSNull null]) {
                 Class clz = NSClassFromString(className);
                 id instance = [self instanceOfClass:clz fromObject:value];
                 //TODO : Correct error handling
@@ -191,9 +195,12 @@ static NSMutableDictionary * _mappers;
     if (objectClass == [NSString class] && sourceObject && [sourceObject isKindOfClass:[NSString class]]) {
         return sourceObject;
     }
+    
+    // Quick instantiation for NSNumber sourceObject
     if (objectClass == [NSNumber class] && sourceObject && [sourceObject isKindOfClass:[NSNumber class]]) {
         return sourceObject;
     }
+    
     
     // Create new instance
     id instance = [objectClass new];
