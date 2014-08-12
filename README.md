@@ -32,7 +32,7 @@ Implementing
 in `SFBaseObject.h`:
 
 
-```
+```objc
 #import "NSObject+SFMapping.h"
 
 @interface SFBaseObject : NSObject
@@ -44,7 +44,7 @@ in `SFBaseObject.h`:
 
 in `SFBaseObject.m` add initialize method with mapping in format `property name` - `key path`:
 
-```
+```objc
 + (void)initialize {
     if (self == [SFBaseObject class]) {
         [self setSFMappingInfo:
@@ -59,7 +59,7 @@ Simple properties
 Lets look on mapping for different simple properties:
 
 
-```
+```objc
 @property (nonatomic, strong) NSString * pString;
 @property (nonatomic, strong) NSNumber * pNumber;
 @property (nonatomic, assign) BOOL pBoolean;
@@ -67,7 +67,7 @@ Lets look on mapping for different simple properties:
 
 Mapping:
 
-```
+```objc
 + (void)initialize {
     if (self == [SFBaseObject class]) {
         [self setSFMappingInfo:
@@ -84,7 +84,7 @@ Arrays
 
 If object has array of `SFArrayItem` objects:
 
-```
+```objc
 @property (nonatomic, strong) NSMutableArray * mutableArray;
 @property (nonatomic, strong) NSMutableArray * immutableArray;
 
@@ -92,7 +92,7 @@ If object has array of `SFArrayItem` objects:
 
 Mapping:
 
-```
+```objc
 + (void)initialize {
     if (self == [SFObjectWithArray class]) {
         [self setSFMappingInfo:
@@ -110,13 +110,13 @@ Objects
 
 If object has reference to `SFAnotherObject`:
 
-```
+```objc
 @property (nonatomic, strong) SFAnotherObject * anotherObject;
 ```
 
 Mapping:
 
-```
+```objc
 + (void)initialize {
     if (self == [SFBaseObject class]) {
         [self setSFMappingInfo:
@@ -139,19 +139,19 @@ There are 2 ways for parsing date (usually it's date string from server in any I
 
 in .h file create date property:
 
-```
+```objc
 @property (nonatomic, strong) NSDate * date;
 ```
 
 in class extension create inner (private) string property:
 
-```
+```objc
 @property (nonatomic, strong) NSString * stringDate;
 ```
 
 mapping string to string:
 
-```
+```objc
 [SFMapping property:@"stringDate" toKeyPath:@"dateFromDictionary"]
 ```
 
@@ -173,19 +173,19 @@ transform string to date:
 
 in .h file create date property:
 
-```
+```objc
 @property (nonatomic, strong) NSDate * date;
 ```
 
 mapping parse date string from dictionary already into NSDate:
 
-```
+```objc
  [[SFMapping property:@"date" toKeyPath:@"dateFromDictionary"] applyCustomMapper:[SMDateMapper sharedInstance]],
 ```
 
 custom date mapper (successor of SFDateMapper):
 
-```
+```objc
 @interface SMDateMapper : SFDateMapper
 
 /*
@@ -198,7 +198,7 @@ yyyy-MM-dd HH:mm:ss Z format
 @end
 ```
 
-```
+```objc
 
 @implementation SMDateMapper
 
