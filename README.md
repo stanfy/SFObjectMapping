@@ -9,7 +9,7 @@ Install
 
 Using CocoaPods
 
-`pod 'SFMapping', :git => 'https://github.com/stanfy/SFObjectMapping.gitt', :tag => '0.0.3'` 
+`pod 'SFMapping', :git => 'https://github.com/stanfy/SFObjectMapping.git', :tag => '0.0.3'` 
 
 
 Using
