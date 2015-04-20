@@ -51,14 +51,12 @@ SPEC_BEGIN(SFMappingRuntimeSpec)
         describe(@"should not parse property", ^{
 
             it(@"for nonexistent class", ^{
-                NSString *propertyType = [SFMappingRuntime typeForProperty:@"rectProperty"
-                                                                   ofClass:NSClassFromString(@"DefunctKlass")];
+                NSString *propertyType = [SFMappingRuntime typeForProperty:@"rectProperty" ofClass:NSClassFromString(@"DefunctKlass")];
                 [[propertyType should] beNil];
             });
 
             it(@"for nonexistent property", ^{
-                NSString *propertyType = [SFMappingRuntime typeForProperty:@"unavailable property"
-                                                                   ofClass:[TestProperty class]];
+                NSString *propertyType = [SFMappingRuntime typeForProperty:@"unavailable property" ofClass:[TestProperty class]];
                 [[propertyType should] beNil];
             });
 

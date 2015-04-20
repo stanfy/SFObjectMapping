@@ -14,13 +14,12 @@
  Virtual protocol for SFMapper
  
  Exists just for parameters order specification for mappers.
- Can be used for adding specifical simple types binding.
+ Can be used for adding specific simple types binding.
  
  I.e.
  
  + (BOOL)applyMapping:(SFMapping *)mapping onObject:(id)object fromObject:(id)sourceObject error:(NSError **)error;
- 
- [SFMappingCore addXMLBindingParser:self for:@"NSArray" selector:@selector(applyNSArrayBinding:onObject:withNodes:)];
+ [SFMappingCore registerMapper:self forClass:@"NSArray" selector:@selector(applyNSArrayBinding:onObject:withNodes:)];
  
  */
 @protocol SFMapper<NSObject>
@@ -30,21 +29,24 @@
  Applies mapping logic for specified object
  Value was already resolved from source object
  */
-- (void)applyMapping:(SFMapping *)mapping onObject:(id)object withValue:(id)value error:(NSError **)error;
+- (BOOL)applyMapping:(SFMapping *)mapping onObject:(id)object withValue:(id)value error:(NSError **)error;
 
 
 /**
- TODO:
+  Method that should be implemented by mapper.
+  Sets specified value for specified key on specified object
+  In general it should do
+  object[key] = value
  */
-- (void)setValue:(id)value forKey:(NSString *)key onObject:(id)object;
+- (BOOL)setValue:(id)value forKey:(NSString *)key onObject:(id)object;
 
 
 @end
 
 
-
 /**
- Base Mapper
+ Base Mapper with default applyMapping:onObject:withValue:error:
+ and setValue:forKey:onObject: implementations
  */
 @interface SFMapper : NSObject<SFMapper>
 

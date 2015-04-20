@@ -21,21 +21,26 @@ customParser = _customParser;
 
 
 - (NSString *)description {
-   NSMutableString * str = [NSMutableString string];
-   [str appendFormat:@"< %@ : ", [self class]];
-   [str appendFormat:@"property= %@, ", _property];
-   [str appendFormat:@"classString= %@, ", _classString];
-   [str appendFormat:@"keyPath= %@, ", _keyPath];
-   [str appendFormat:@"collection= %@, ", _collection ? @"YES" : @"NO"];
-   if (_collection) {
-      [str appendFormat:@"itemClass= %@, ", _itemClass ? @"YES" : @"NO"];
-   }
-   [str appendFormat:@"userInfo= %@, ", _userInfo];
-   if (_customParser) {
-      [str appendFormat:@"customParser= %@, ", _customParser];
-   }
-   [str appendString:@">"];
-   return str;
+    NSMutableString *str = [NSMutableString string];
+    [str appendFormat:@"<%@ : ", [self class]];
+    if (_classString) {
+        [str appendFormat:@"%@", _classString];
+    } else {
+        [str appendFormat:@"autodetect"];
+    }
+    if (_collection) {
+        [str appendFormat:@"[%@]", _itemClass];
+    }
+    [str appendFormat:@" %@ ", _property];
+    [str appendFormat:@"<- '%@', ", _keyPath];
+    if (_userInfo) {
+        [str appendFormat:@"(userInfo:%@), ", _userInfo];
+    }
+    if (_customParser) {
+        [str appendFormat:@", mapped by:%@, ", NSStringFromClass(_customParser.class)];
+    }
+    [str appendString:@">"];
+    return str;
 }
 
 

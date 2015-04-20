@@ -30,12 +30,10 @@ static NSMutableDictionary * _mappers;
     // SFXMLBindingNSStringParser
     // etc
     NSArray * parseTypes =
-    [NSArray arrayWithObjects:
-     @"NSNumber",
-     @"NSString",
-     @"NSArray",
-     @"BOOL",
-     nil];
+        @[@"NSNumber",
+            @"NSString",
+            @"NSArray",
+            @"BOOL"];
     
     // Adding mapper for each map name
     for (NSString * parseType in parseTypes) {
@@ -146,7 +144,7 @@ static NSMutableDictionary * _mappers;
         
         // resolving string property class name
         NSString * className = [mapping classString];
-        id<SFMapper> mapper = [_mappers objectForKey:className];
+        id<SFMapper> mapper = _mappers[className];
         
         if (!mapper) {
             
@@ -156,7 +154,7 @@ static NSMutableDictionary * _mappers;
             while (!mapper && clz) {
                 clz = class_getSuperclass(clz);
                 if (clz) {
-                    mapper = [_mappers objectForKey:NSStringFromClass(clz)];
+                    mapper = _mappers[NSStringFromClass(clz)];
                 }
             }
         }
