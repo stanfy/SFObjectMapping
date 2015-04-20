@@ -78,7 +78,7 @@
     }
     
     // BOOL
-    if ([attributesString hasPrefix:@"Tc"] || [attributesString hasPrefix:@"c"]) {
+    if ([attributesString hasPrefix:@"Tc"] || [attributesString hasPrefix:@"TB"] || [attributesString hasPrefix:@"c"]) {
         return @"BOOL";
     }
     

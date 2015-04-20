@@ -14,11 +14,6 @@ SPEC_BEGIN(SFMapperSpec)
 
 describe(@"SFMapper", ^{
 
-    context(@"Once created", ^{
-        it(@"should not be nil", ^{
-            [[@"" should] beNil];
-        });
-    });
 
 });
 
