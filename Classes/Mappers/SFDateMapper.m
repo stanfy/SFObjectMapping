@@ -7,17 +7,24 @@
 
 #import "SFDateMapper.h"
 #import "SFMapping.h"
+#import "NSError+SFMapping.h"
 
 @implementation SFDateMapper
 
 @synthesize dateFormatter = _dateFormatter;
 
+- (instancetype)initWithDateFormatter:(NSDateFormatter *)dateFormatter {
+    self = [super init];
+    if (self) {
+        _dateFormatter = dateFormatter;
+    }
+
+    return self;
+}
 
 + (id)instanceWithDateFormatter:(NSDateFormatter *)dateFormatter {
-    SFDateMapper *result = [[SFDateMapper alloc] init];
-    result.dateFormatter = dateFormatter;
+    SFDateMapper *result = [[SFDateMapper alloc] initWithDateFormatter:dateFormatter];
     return result;
-
 }
 
 
@@ -26,25 +33,20 @@
         return NO;
     }
 
-    if (value) {
-        [self setValue:value forKey:mapping.property onObject:object];
-    }
-    return YES;
-
-}
-
-
-- (BOOL)setValue:(id)value forKey:(NSString *)key onObject:(id)destObject {
     if ([value isKindOfClass:[NSString class]]) {
         NSDate *date = [self.dateFormatter dateFromString:value];
         if (date) {
-            [destObject setValue:date forKey:key];
+            [object setValue:date forKey:mapping.property];
+            return YES;
         }
-//      } else {
-//         [destObject setNilValueForKey:key];
-//      }
     }
-    return YES;
+
+    if (error) {
+        *error = [NSError sfMappingErrorWithMapping:mapping object:object value:value];
+    }
+    return NO;
+
 }
+
 
 @end

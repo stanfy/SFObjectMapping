@@ -19,6 +19,7 @@
 		1737C95E15FE5A91E681FC9B /* NSError+SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C3019FA644E3332C428A /* NSError+SFMapping.m */; };
 		1737CAED588B43E1664607E7 /* SFBOOLMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C50BFA6FCB6B6017E6E9 /* SFBOOLMapperSpec.m */; };
 		1737CC990D658F300AC1C817 /* SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C6EEA3EF4A9607A9BB0B /* SFMapping.m */; };
+		1737CCC21B388DDD1F603C0C /* SFDateMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C399A80C0D6356B565E0 /* SFDateMapperSpec.m */; };
 		1737CDE3AE900A2F24F33A9E /* SFMappingRuntimeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C95DBB77E30A4B6AAF1F /* SFMappingRuntimeSpec.m */; };
 		1737CE0F1391B6391E07A288 /* SFDateMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C661692252F81050270F /* SFDateMapper.m */; };
 		1737CE301802C3CA0D4BAC7F /* SFMappingRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C3EDF17C24C78C29CCD4 /* SFMappingRuntime.m */; };
@@ -54,6 +55,7 @@
 		1737C140225B769B084F659E /* SFDateMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDateMapper.h; sourceTree = "<group>"; };
 		1737C1D93786BF453C58FC37 /* NSObject+SFMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SFMapping.m"; sourceTree = "<group>"; };
 		1737C3019FA644E3332C428A /* NSError+SFMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+SFMapping.m"; sourceTree = "<group>"; };
+		1737C399A80C0D6356B565E0 /* SFDateMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDateMapperSpec.m; sourceTree = "<group>"; };
 		1737C3C1FEB784C463AC5C8D /* SFMappingCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMappingCore.h; sourceTree = "<group>"; };
 		1737C3D9E7714A8CE14A6998 /* SFMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMapper.h; sourceTree = "<group>"; };
 		1737C3EDF17C24C78C29CCD4 /* SFMappingRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMappingRuntime.m; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				1737C50BFA6FCB6B6017E6E9 /* SFBOOLMapperSpec.m */,
 				1737C6BF0046F9EBA62EA169 /* SFNumberMapperSpec.m */,
+				1737C399A80C0D6356B565E0 /* SFDateMapperSpec.m */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				1737CDE3AE900A2F24F33A9E /* SFMappingRuntimeSpec.m in Sources */,
 				1737CAED588B43E1664607E7 /* SFBOOLMapperSpec.m in Sources */,
 				1737C1336E20E2CE6772CCCF /* SFNumberMapperSpec.m in Sources */,
+				1737CCC21B388DDD1F603C0C /* SFDateMapperSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +496,13 @@
 		7367640C1AE52ACD007A1F81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				OTHER_LDFLAGS = "-ObjC";
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-ftest-coverage",
+					"-fprofile-arcs",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -516,6 +526,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",

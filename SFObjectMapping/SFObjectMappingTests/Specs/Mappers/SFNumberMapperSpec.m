@@ -74,14 +74,14 @@ SPEC_BEGIN(SFNumberMapperSpec)
 
         context(@"When NSString value passed in", ^{
 
-            it(@"should call KVC with this value", ^{
+            it(@"should call KVC with this value (double)", ^{
                 sut = [KWMock nullMockForClass:TestProperty.class];
                 NSString *stringValue = @"123.0";
                 [[sut should] receive:@selector(setValue:forKeyPath:) withArguments:@123.0, boolPropertyMapping.property, nil];
                 [numberMapper applyMapping:boolPropertyMapping onObject:sut withValue:stringValue error:nil];
             });
 
-            it(@"should call KVC with this value", ^{
+            it(@"should call KVC with this value (int)", ^{
                 sut = [KWMock nullMockForClass:TestProperty.class];
                 NSString *stringValue = @"12";
                 [[sut should] receive:@selector(setValue:forKeyPath:) withArguments:@12, boolPropertyMapping.property, nil];
@@ -89,7 +89,7 @@ SPEC_BEGIN(SFNumberMapperSpec)
             });
 
             /** TODO : It's a good question if NSNUMBER formatter should handle this case or not, but I suppose that it shouldn't */
-            xit(@"should call KVC with this value", ^{
+            xit(@"should call KVC with this value (bool)", ^{
                 sut = [KWMock nullMockForClass:TestProperty.class];
                 NSString *stringValue = @"True";
                 [[sut should] receive:@selector(setValue:forKeyPath:) withArguments:@YES, boolPropertyMapping.property, nil];
@@ -109,20 +109,20 @@ SPEC_BEGIN(SFNumberMapperSpec)
                 });
 
                 it(@"should return error", ^{
-                    NSError * error = nil;
+                    NSError *error = nil;
                     [numberMapper applyMapping:boolPropertyMapping onObject:sut withValue:objectValue error:&error];
                     [[error shouldNot] beNil];
                 });
 
                 it(@"should return error SFMapping domain with SFMappingErrorCodeCannotPerformMapping code", ^{
-                    NSError * error = nil;
+                    NSError *error = nil;
                     [numberMapper applyMapping:boolPropertyMapping onObject:sut withValue:objectValue error:&error];
                     [[[error domain] should] equal:kSFMappingErrorDomain];
                     [[theValue([error code]) should] equal:theValue(SFMappingErrorCodeCannotPerformMapping)];
                 });
 
                 it(@"should return error with valid description", ^{
-                    NSError * error = nil;
+                    NSError *error = nil;
                     [numberMapper applyMapping:boolPropertyMapping onObject:sut withValue:objectValue error:&error];
                     [[[error localizedDescription] shouldNot] beNil];
                 });

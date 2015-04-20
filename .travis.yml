@@ -1,4 +1,8 @@
 language: objective-c
-xcode_workspace: SFObjectMapping.xcworkspace # path to your xcodeproj folder
-xcode_scheme: SFObjectMappingTests
-xcode_sdk: iphonesimulator8.1
+before_install:
+  - sudo easy_install cpp-coveralls
+
+script:
+  - xctool test
+
+after_success: ./SFObjectMapping/SFObjectMappingTests/Scripts/coveralls.sh

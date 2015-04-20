@@ -8,12 +8,11 @@
 #import <Foundation/Foundation.h>
 #import "SFMapper.h"
 
-@interface SFDateMapper : NSObject <SFMapper> {
+@interface SFDateMapper : NSObject <SFMapper>
 
-   NSDateFormatter * _dateFormatter;
-}
+@property(nonatomic, readonly) NSDateFormatter * dateFormatter;
 
-@property(nonatomic, retain) NSDateFormatter * dateFormatter;
+- (instancetype)initWithDateFormatter:(NSDateFormatter *)dateFormatter NS_DESIGNATED_INITIALIZER;
 
 + (id)instanceWithDateFormatter:(NSDateFormatter *)dateFormatter;
 

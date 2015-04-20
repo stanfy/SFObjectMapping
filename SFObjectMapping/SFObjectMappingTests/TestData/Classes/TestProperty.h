@@ -19,5 +19,6 @@
 @property(nonatomic, assign) double doubleProperty;
 @property(nonatomic, assign) CGRect rectProperty;
 @property(nonatomic, assign) BOOL boolProperty;
+@property(nonatomic, strong) NSDate* dateProperty;
 
 @end
