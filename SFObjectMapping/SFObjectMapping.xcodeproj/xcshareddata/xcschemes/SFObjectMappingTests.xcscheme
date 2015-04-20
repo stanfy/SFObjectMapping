@@ -13,9 +13,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "736763F61AE52ACD007A1F81"
-               BuildableName = "libSFObjectMapping.a"
-               BlueprintName = "SFObjectMapping"
+               BlueprintIdentifier = "736764011AE52ACD007A1F81"
+               BuildableName = "SFObjectMappingTests.xctest"
+               BlueprintName = "SFObjectMappingTests"
                ReferencedContainer = "container:SFObjectMapping.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,6 +27,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "736764011AE52ACD007A1F81"
+               BuildableName = "SFObjectMappingTests.xctest"
+               BlueprintName = "SFObjectMappingTests"
+               ReferencedContainer = "container:SFObjectMapping.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -41,9 +51,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "736763F61AE52ACD007A1F81"
-            BuildableName = "libSFObjectMapping.a"
-            BlueprintName = "SFObjectMapping"
+            BlueprintIdentifier = "736764011AE52ACD007A1F81"
+            BuildableName = "SFObjectMappingTests.xctest"
+            BlueprintName = "SFObjectMappingTests"
             ReferencedContainer = "container:SFObjectMapping.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

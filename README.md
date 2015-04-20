@@ -1,6 +1,7 @@
 SFObjectMapping
 ---------------
 
+[![Build Status](https://travis-ci.org/stanfy/SFObjectMapping.svg?branch=develop)](https://travis-ci.org/stanfy/SFObjectMapping)  
 Object mapping for parsing dictionaries into object
 
 
