@@ -6,6 +6,10 @@
 #import <Foundation/Foundation.h>
 #import "SFMapper.h"
 
-
+/*
+String Mapper responsible for mapping values into NSString properties
+DEvaule implementation handles NSNumbers, Nulls and Strings
+ */
 @interface SFNSStringMapper : SFMapper
+
 @end

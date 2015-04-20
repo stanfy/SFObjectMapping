@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1737C1336E20E2CE6772CCCF /* SFNumberMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C6BF0046F9EBA62EA169 /* SFNumberMapperSpec.m */; };
+		1737C28024F773532C94FE74 /* SFNSStringMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CABDF669022556E52B82 /* SFNSStringMapperSpec.m */; };
 		1737C396664A850F5BC00AB4 /* SFMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C6A875DF90BB145FC0CB /* SFMapper.m */; };
 		1737C3B6AFA0403E26C1E0A4 /* SFNSArrayMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C444E808E5C60CAF61B5 /* SFNSArrayMapper.m */; };
 		1737C3DB918FBE4935D9E671 /* SFNSStringMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CD16D5026E420AB5E997 /* SFNSStringMapper.m */; };
@@ -75,6 +76,7 @@
 		1737C9FB2BA6C00A3EECAA2A /* SFNSNumberMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNSNumberMapper.h; sourceTree = "<group>"; };
 		1737C9FE22D99DE4EF359913 /* SFBOOLMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBOOLMapper.h; sourceTree = "<group>"; };
 		1737CA20A3C2C14FFFF15122 /* NSObject+SFMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SFMapping.h"; sourceTree = "<group>"; };
+		1737CABDF669022556E52B82 /* SFNSStringMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNSStringMapperSpec.m; sourceTree = "<group>"; };
 		1737CB569487532C7EDA2B29 /* TestProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestProperty.m; sourceTree = "<group>"; };
 		1737CB70EE6911A45270E2E4 /* SFMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMapping.h; sourceTree = "<group>"; };
 		1737CC192EDFBCDBB829D807 /* NSError+SFMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+SFMapping.h"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				1737C50BFA6FCB6B6017E6E9 /* SFBOOLMapperSpec.m */,
 				1737C6BF0046F9EBA62EA169 /* SFNumberMapperSpec.m */,
 				1737C399A80C0D6356B565E0 /* SFDateMapperSpec.m */,
+				1737CABDF669022556E52B82 /* SFNSStringMapperSpec.m */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				1737CAED588B43E1664607E7 /* SFBOOLMapperSpec.m in Sources */,
 				1737C1336E20E2CE6772CCCF /* SFNumberMapperSpec.m in Sources */,
 				1737CCC21B388DDD1F603C0C /* SFDateMapperSpec.m in Sources */,
+				1737C28024F773532C94FE74 /* SFNSStringMapperSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

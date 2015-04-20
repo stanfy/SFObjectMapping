@@ -5,6 +5,7 @@
 
 #import "SFNSStringMapper.h"
 #import "SFMapping.h"
+#import "NSError+SFMapping.h"
 
 
 @implementation SFNSStringMapper
@@ -21,14 +22,16 @@
 
     } else if ([value isKindOfClass:[NSString class]]) {
         //String
-        [self setValue:value forKey:mapping.property onObject:object];
+        NSString *stringValue = (NSString *) value;
+        [self setValue:[stringValue copy] forKey:mapping.property onObject:object];
 
     } else {
         // TODO: Correct error handling
         NSLog(@"%@ Couldn't convert value : %@ to NSString", self, value);
         if (error) {
-            *error = [NSError errorWithDomain:@"Not implemented mapping" code:-1 userInfo:nil];
+            *error = [NSError sfMappingErrorWithMapping:mapping object:object value:value];
         }
+        return NO;
     }
     return YES;
 }
