@@ -25,7 +25,7 @@
         if ([destObject isKindOfClass:[NSDictionary class]]) {
             [destObject setObject:value forKey:key];
         } else {
-            [destObject setValue:value forKey:key];
+            [destObject setValue:value forKeyPath:key];
         }
     }
     return YES;

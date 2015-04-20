@@ -5,6 +5,7 @@
 
 #import "SFNSNumberMapper.h"
 #import "SFMapping.h"
+#import "NSError+SFMapping.h"
 
 
 @implementation SFNSNumberMapper
@@ -37,11 +38,10 @@ static NSNumber * _zeroValue;
         [self setValue:@([value doubleValue]) forKey:mapping.property onObject:object];
 
     } else {
-        // TODO: Correct error handling
-        NSLog(@"%@ Couldn't convert value : %@ to Number", self, value);
         if (error) {
-            *error = [NSError errorWithDomain:@"Not implemented mapping" code:-1 userInfo:nil];
+            *error = [NSError sfMappingErrorWithMapping:mapping object:object value:value];
         }
+        return NO;
     }
     return YES;
 }

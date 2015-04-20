@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1737C1336E20E2CE6772CCCF /* SFNumberMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C6BF0046F9EBA62EA169 /* SFNumberMapperSpec.m */; };
 		1737C396664A850F5BC00AB4 /* SFMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C6A875DF90BB145FC0CB /* SFMapper.m */; };
 		1737C3B6AFA0403E26C1E0A4 /* SFNSArrayMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C444E808E5C60CAF61B5 /* SFNSArrayMapper.m */; };
 		1737C3DB918FBE4935D9E671 /* SFNSStringMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CD16D5026E420AB5E997 /* SFNSStringMapper.m */; };
@@ -64,6 +65,7 @@
 		1737C60AB07BF19E304CB7A6 /* SFNSStringMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNSStringMapper.h; sourceTree = "<group>"; };
 		1737C661692252F81050270F /* SFDateMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDateMapper.m; sourceTree = "<group>"; };
 		1737C6A875DF90BB145FC0CB /* SFMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMapper.m; sourceTree = "<group>"; };
+		1737C6BF0046F9EBA62EA169 /* SFNumberMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNumberMapperSpec.m; sourceTree = "<group>"; };
 		1737C6D893EC127AB9E7D4CB /* SFBOOLMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBOOLMapper.m; sourceTree = "<group>"; };
 		1737C6EEA3EF4A9607A9BB0B /* SFMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMapping.m; sourceTree = "<group>"; };
 		1737C8A866EFE3DAA07D57FA /* SFMappingCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMappingCore.m; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				1737C50BFA6FCB6B6017E6E9 /* SFBOOLMapperSpec.m */,
+				1737C6BF0046F9EBA62EA169 /* SFNumberMapperSpec.m */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				1737C784D4FFD61C254D4AC0 /* TestProperty.m in Sources */,
 				1737CDE3AE900A2F24F33A9E /* SFMappingRuntimeSpec.m in Sources */,
 				1737CAED588B43E1664607E7 /* SFBOOLMapperSpec.m in Sources */,
+				1737C1336E20E2CE6772CCCF /* SFNumberMapperSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

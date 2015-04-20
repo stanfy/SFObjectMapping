@@ -11,10 +11,13 @@
 
 @interface TestProperty : NSObject
 
-@property (nonatomic, strong) NSString *stringProperty;
-@property (nonatomic, readwrite) int intProperty;
-@property (nonatomic, readwrite) float floatProperty;
-@property (nonatomic, readwrite) CGRect rectProperty;
-@property (nonatomic, readwrite) BOOL boolProperty;
+@property(nonatomic, strong) NSString *stringProperty;
+@property(nonatomic, assign) NSNumber * numberProperty;
+@property(nonatomic, assign) int intProperty;
+@property(nonatomic, assign) long longProperty;
+@property(nonatomic, assign) float floatProperty;
+@property(nonatomic, assign) double doubleProperty;
+@property(nonatomic, assign) CGRect rectProperty;
+@property(nonatomic, assign) BOOL boolProperty;
 
 @end

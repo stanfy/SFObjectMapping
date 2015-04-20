@@ -38,7 +38,6 @@ static NSNumber * _falseValue;
         [self setValue:@([value boolValue]) forKey:mapping.property onObject:object];
 
     } else {
-        // TODO: Correct error handling
         NSLog(@"%@ Couldn't convert value : %@ to BOOL", self, value);
         if (error) {
             *error = [NSError sfMappingErrorWithMapping:mapping object:object value:value];
