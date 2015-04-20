@@ -36,7 +36,7 @@
     if ([value isKindOfClass:[NSString class]]) {
         NSDate *date = [self.dateFormatter dateFromString:value];
         if (date) {
-            [object setValue:date forKey:mapping.property];
+            [object setValue:date forKeyPath:mapping.property];
             return YES;
         }
     }

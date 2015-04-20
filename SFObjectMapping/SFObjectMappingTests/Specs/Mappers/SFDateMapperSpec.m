@@ -19,7 +19,7 @@ SPEC_BEGIN(SFDateMapperSpec)
 describe(@"SFDateMapper", ^{
 
     __block SFDateMapper *dateMapper;
-    __block SFMapping *datePropertyMapping = [SFMapping property:@"boolProperty" toKeyPath:@"bool"];
+    __block SFMapping *datePropertyMapping = [SFMapping property:@"dateProperty" toKeyPath:@"date"];
     __block TestProperty *sut;
     __block NSDateFormatter * dateFormatter;
 
@@ -27,6 +27,15 @@ describe(@"SFDateMapper", ^{
         dateFormatter = [KWMock nullMockForClass:[NSDateFormatter class]];
         dateMapper = [[SFDateMapper alloc] initWithDateFormatter:dateFormatter];
         sut = [TestProperty new];
+    });
+
+    context(@"When created with factory method", ^{
+        beforeEach(^{
+            dateMapper = [SFDateMapper instanceWithDateFormatter:dateFormatter];
+        });
+        it(@"should be initialized with passed dateFormatter", ^{
+            [[dateMapper.dateFormatter should] equal:dateFormatter];
+        });
     });
 
     context(@"When nil value passed in", ^{
@@ -84,6 +93,36 @@ describe(@"SFDateMapper", ^{
                 NSError *error = nil;
                 [dateMapper applyMapping:datePropertyMapping onObject:sut withValue:dateString error:&error];
                 [[[error localizedDescription] shouldNot] beNil];
+            });
+
+        });
+
+        context(@"And dateformatter return valid date", ^{
+
+            __block NSString * dateString = @"1994.23.023";
+            __block NSDate *date = nil;
+
+            beforeEach(^{
+                date = [NSDate date];
+                [dateFormatter stub:@selector(dateFromString:) andReturn:date];
+            });
+
+            it(@"should call any KVC setters with this date", ^{
+                sut = [KWMock nullMockForClass:TestProperty.class];
+                [[sut should] receive:@selector(setValue:forKeyPath:) withArguments:date, datePropertyMapping.property, nil];
+                [dateMapper applyMapping:datePropertyMapping onObject:sut withValue:dateString error:nil];
+            });
+
+            it(@"should success to apply mapping", ^{
+                BOOL mappingValue = [dateMapper applyMapping:datePropertyMapping onObject:sut withValue:dateString error:nil];
+                [[theValue(mappingValue) should] beTrue];
+            });
+
+
+            it(@"should not return error", ^{
+                NSError *error = nil;
+                [dateMapper applyMapping:datePropertyMapping onObject:sut withValue:dateString error:&error];
+                [[error should] beNil];
             });
 
         });
