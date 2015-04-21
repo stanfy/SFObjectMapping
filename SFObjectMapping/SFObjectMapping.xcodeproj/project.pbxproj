@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1737C1170145361771218A20 /* TestInheritedProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CCA7909D037FFE4F03F2 /* TestInheritedProperty.m */; };
 		1737C1336E20E2CE6772CCCF /* SFNumberMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C6BF0046F9EBA62EA169 /* SFNumberMapperSpec.m */; };
 		1737C28024F773532C94FE74 /* SFNSStringMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CABDF669022556E52B82 /* SFNSStringMapperSpec.m */; };
+		1737C2880CB9511999665FBD /* CustomChildObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CEA0F5252E557F7A6E22 /* CustomChildObject.m */; };
 		1737C396664A850F5BC00AB4 /* SFMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C6A875DF90BB145FC0CB /* SFMapper.m */; };
 		1737C3B6AFA0403E26C1E0A4 /* SFNSArrayMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C444E808E5C60CAF61B5 /* SFNSArrayMapper.m */; };
 		1737C3DB918FBE4935D9E671 /* SFNSStringMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CD16D5026E420AB5E997 /* SFNSStringMapper.m */; };
@@ -21,7 +23,10 @@
 		1737C784D4FFD61C254D4AC0 /* TestProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CB569487532C7EDA2B29 /* TestProperty.m */; };
 		1737C95E15FE5A91E681FC9B /* NSError+SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C3019FA644E3332C428A /* NSError+SFMapping.m */; };
 		1737C9CAABDCB4E15EE811E6 /* NSObjectSFMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C8DF3D243BD01C9E887D /* NSObjectSFMappingSpec.m */; };
+		1737CAC28837CAF792BD883D /* CustomGrandChildObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C83229444F09D6FD4E83 /* CustomGrandChildObject.m */; };
+		1737CAC97DDB0C9360A5B533 /* CustomRootObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C3F3221069730888EE5C /* CustomRootObject.m */; };
 		1737CAED588B43E1664607E7 /* SFBOOLMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C50BFA6FCB6B6017E6E9 /* SFBOOLMapperSpec.m */; };
+		1737CC093D23E0D0AACA75F5 /* SFMappingInheritanceCasesSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C87B1DEAC8CA2E61412F /* SFMappingInheritanceCasesSpec.m */; };
 		1737CC990D658F300AC1C817 /* SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C6EEA3EF4A9607A9BB0B /* SFMapping.m */; };
 		1737CCC21B388DDD1F603C0C /* SFDateMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C399A80C0D6356B565E0 /* SFDateMapperSpec.m */; };
 		1737CDE3AE900A2F24F33A9E /* SFMappingRuntimeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C95DBB77E30A4B6AAF1F /* SFMappingRuntimeSpec.m */; };
@@ -56,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		1737C0343669E23BBAF41D2E /* TestProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestProperty.h; sourceTree = "<group>"; };
+		1737C11F83768E6E766E6AAC /* TestInheritedProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestInheritedProperty.h; sourceTree = "<group>"; };
 		1737C140225B769B084F659E /* SFDateMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDateMapper.h; sourceTree = "<group>"; };
 		1737C1D93786BF453C58FC37 /* NSObject+SFMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SFMapping.m"; sourceTree = "<group>"; };
 		1737C25A3B128751FB108D7B /* SFMappingCasesSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMappingCasesSpec.m; sourceTree = "<group>"; };
@@ -64,6 +70,7 @@
 		1737C3C1FEB784C463AC5C8D /* SFMappingCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMappingCore.h; sourceTree = "<group>"; };
 		1737C3D9E7714A8CE14A6998 /* SFMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMapper.h; sourceTree = "<group>"; };
 		1737C3EDF17C24C78C29CCD4 /* SFMappingRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMappingRuntime.m; sourceTree = "<group>"; };
+		1737C3F3221069730888EE5C /* CustomRootObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRootObject.m; sourceTree = "<group>"; };
 		1737C444E808E5C60CAF61B5 /* SFNSArrayMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNSArrayMapper.m; sourceTree = "<group>"; };
 		1737C47D1CC86C46F3789F2C /* SFNSNumberMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNSNumberMapper.m; sourceTree = "<group>"; };
 		1737C50BFA6FCB6B6017E6E9 /* SFBOOLMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBOOLMapperSpec.m; sourceTree = "<group>"; };
@@ -75,17 +82,24 @@
 		1737C6BF0046F9EBA62EA169 /* SFNumberMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNumberMapperSpec.m; sourceTree = "<group>"; };
 		1737C6D893EC127AB9E7D4CB /* SFBOOLMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBOOLMapper.m; sourceTree = "<group>"; };
 		1737C6EEA3EF4A9607A9BB0B /* SFMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMapping.m; sourceTree = "<group>"; };
+		1737C83229444F09D6FD4E83 /* CustomGrandChildObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGrandChildObject.m; sourceTree = "<group>"; };
+		1737C87B1DEAC8CA2E61412F /* SFMappingInheritanceCasesSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMappingInheritanceCasesSpec.m; sourceTree = "<group>"; };
 		1737C8A866EFE3DAA07D57FA /* SFMappingCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMappingCore.m; sourceTree = "<group>"; };
 		1737C8DF3D243BD01C9E887D /* NSObjectSFMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectSFMappingSpec.m; sourceTree = "<group>"; };
 		1737C95DBB77E30A4B6AAF1F /* SFMappingRuntimeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMappingRuntimeSpec.m; sourceTree = "<group>"; };
 		1737C9FB2BA6C00A3EECAA2A /* SFNSNumberMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNSNumberMapper.h; sourceTree = "<group>"; };
 		1737C9FE22D99DE4EF359913 /* SFBOOLMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBOOLMapper.h; sourceTree = "<group>"; };
 		1737CA20A3C2C14FFFF15122 /* NSObject+SFMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SFMapping.h"; sourceTree = "<group>"; };
+		1737CAADE4386BCED5ECCE37 /* CustomRootObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRootObject.h; sourceTree = "<group>"; };
 		1737CABDF669022556E52B82 /* SFNSStringMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNSStringMapperSpec.m; sourceTree = "<group>"; };
 		1737CB569487532C7EDA2B29 /* TestProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestProperty.m; sourceTree = "<group>"; };
 		1737CB70EE6911A45270E2E4 /* SFMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMapping.h; sourceTree = "<group>"; };
 		1737CC192EDFBCDBB829D807 /* NSError+SFMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+SFMapping.h"; sourceTree = "<group>"; };
+		1737CC4FF2185C91612CEDEB /* CustomChildObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomChildObject.h; sourceTree = "<group>"; };
+		1737CC5D330A207546DA4885 /* CustomGrandChildObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGrandChildObject.h; sourceTree = "<group>"; };
+		1737CCA7909D037FFE4F03F2 /* TestInheritedProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestInheritedProperty.m; sourceTree = "<group>"; };
 		1737CD16D5026E420AB5E997 /* SFNSStringMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNSStringMapper.m; sourceTree = "<group>"; };
+		1737CEA0F5252E557F7A6E22 /* CustomChildObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomChildObject.m; sourceTree = "<group>"; };
 		1737CFD2AFE4980A224B7A39 /* SFNSArrayMapperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNSArrayMapperSpec.m; sourceTree = "<group>"; };
 		736763F71AE52ACD007A1F81 /* libSFObjectMapping.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSFObjectMapping.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		736764021AE52ACD007A1F81 /* SFObjectMappingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFObjectMappingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +154,14 @@
 			children = (
 				1737C0343669E23BBAF41D2E /* TestProperty.h */,
 				1737CB569487532C7EDA2B29 /* TestProperty.m */,
+				1737CCA7909D037FFE4F03F2 /* TestInheritedProperty.m */,
+				1737C11F83768E6E766E6AAC /* TestInheritedProperty.h */,
+				1737C3F3221069730888EE5C /* CustomRootObject.m */,
+				1737CAADE4386BCED5ECCE37 /* CustomRootObject.h */,
+				1737CEA0F5252E557F7A6E22 /* CustomChildObject.m */,
+				1737CC4FF2185C91612CEDEB /* CustomChildObject.h */,
+				1737C83229444F09D6FD4E83 /* CustomGrandChildObject.m */,
+				1737CC5D330A207546DA4885 /* CustomGrandChildObject.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -214,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				1737C25A3B128751FB108D7B /* SFMappingCasesSpec.m */,
+				1737C87B1DEAC8CA2E61412F /* SFMappingInheritanceCasesSpec.m */,
 			);
 			path = Mapping;
 			sourceTree = "<group>";
@@ -433,6 +456,11 @@
 				1737C4F0B3EF77F6A9ED31C0 /* SFNSArrayMapperSpec.m in Sources */,
 				1737C9CAABDCB4E15EE811E6 /* NSObjectSFMappingSpec.m in Sources */,
 				1737C6003A43FD872D534634 /* SFMappingCasesSpec.m in Sources */,
+				1737CC093D23E0D0AACA75F5 /* SFMappingInheritanceCasesSpec.m in Sources */,
+				1737C1170145361771218A20 /* TestInheritedProperty.m in Sources */,
+				1737CAC97DDB0C9360A5B533 /* CustomRootObject.m in Sources */,
+				1737C2880CB9511999665FBD /* CustomChildObject.m in Sources */,
+				1737CAC28837CAF792BD883D /* CustomGrandChildObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

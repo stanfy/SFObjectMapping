@@ -179,6 +179,7 @@ static NSMutableDictionary * _mappers;
         } else {
             if (sourceObject && value && value != [NSNull null]) {
                 Class clz = NSClassFromString(className);
+                // TODO : Correct instantiation
                 id instance = [self instanceOfClass:clz fromObject:value];
                 //TODO : Correct error handling
                 //  [self applyMappingsOnObject:destObject fromObject:sourceObject error:nil];
