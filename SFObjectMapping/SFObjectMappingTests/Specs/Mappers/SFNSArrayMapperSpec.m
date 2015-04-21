@@ -72,7 +72,7 @@ SPEC_BEGIN(SFNSArrayMapperSpec)
 
             context(@"and item class is valid", ^{
                 beforeEach(^{
-                    mapping = [SFMapping collection:@"arrayProperty" itemClass:@"TestProperty" toKeyPath:@"values"];
+                    mapping = [SFMapping collection:@"arrayProperty" itemClass:@"NSObject" toKeyPath:@"values"];
                 });
                 context(@"And source value is NSArray", ^{
                     __block NSObject *objectValue;

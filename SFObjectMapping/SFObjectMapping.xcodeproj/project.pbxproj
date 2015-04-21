@@ -19,6 +19,7 @@
 		1737C742C75B8778FE6E51A0 /* NSObject+SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C1D93786BF453C58FC37 /* NSObject+SFMapping.m */; };
 		1737C784D4FFD61C254D4AC0 /* TestProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CB569487532C7EDA2B29 /* TestProperty.m */; };
 		1737C95E15FE5A91E681FC9B /* NSError+SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C3019FA644E3332C428A /* NSError+SFMapping.m */; };
+		1737C9CAABDCB4E15EE811E6 /* NSObjectSFMappingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C8DF3D243BD01C9E887D /* NSObjectSFMappingSpec.m */; };
 		1737CAED588B43E1664607E7 /* SFBOOLMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C50BFA6FCB6B6017E6E9 /* SFBOOLMapperSpec.m */; };
 		1737CC990D658F300AC1C817 /* SFMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C6EEA3EF4A9607A9BB0B /* SFMapping.m */; };
 		1737CCC21B388DDD1F603C0C /* SFDateMapperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C399A80C0D6356B565E0 /* SFDateMapperSpec.m */; };
@@ -73,6 +74,7 @@
 		1737C6D893EC127AB9E7D4CB /* SFBOOLMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBOOLMapper.m; sourceTree = "<group>"; };
 		1737C6EEA3EF4A9607A9BB0B /* SFMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMapping.m; sourceTree = "<group>"; };
 		1737C8A866EFE3DAA07D57FA /* SFMappingCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMappingCore.m; sourceTree = "<group>"; };
+		1737C8DF3D243BD01C9E887D /* NSObjectSFMappingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectSFMappingSpec.m; sourceTree = "<group>"; };
 		1737C95DBB77E30A4B6AAF1F /* SFMappingRuntimeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMappingRuntimeSpec.m; sourceTree = "<group>"; };
 		1737C9FB2BA6C00A3EECAA2A /* SFNSNumberMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNSNumberMapper.h; sourceTree = "<group>"; };
 		1737C9FE22D99DE4EF359913 /* SFBOOLMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBOOLMapper.h; sourceTree = "<group>"; };
@@ -167,11 +169,20 @@
 			path = ../../Classes;
 			sourceTree = "<group>";
 		};
+		1737CBBC73410AA52D02B655 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				1737C8DF3D243BD01C9E887D /* NSObjectSFMappingSpec.m */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
 		1737CCD923577D7C9345588C /* Specs */ = {
 			isa = PBXGroup;
 			children = (
 				1737C95DBB77E30A4B6AAF1F /* SFMappingRuntimeSpec.m */,
 				1737CF1B353245EB5C6CD5CE /* Mappers */,
+				1737CBBC73410AA52D02B655 /* NSObject */,
 			);
 			path = Specs;
 			sourceTree = "<group>";
@@ -409,6 +420,7 @@
 				1737CCC21B388DDD1F603C0C /* SFDateMapperSpec.m in Sources */,
 				1737C28024F773532C94FE74 /* SFNSStringMapperSpec.m in Sources */,
 				1737C4F0B3EF77F6A9ED31C0 /* SFNSArrayMapperSpec.m in Sources */,
+				1737C9CAABDCB4E15EE811E6 /* NSObjectSFMappingSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,6 @@
 //
-//  NSObject(SFXMLMapping)
-//  Nemlig-iPad
+//  NSObject(SFObjectMapping)
+//  SFObjectMapping
 //
 //  Created by Paul Taykalo on 6/7/12.
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
@@ -26,8 +26,8 @@
 /**
  Applies mappings from specified object to self.
  */
-- (void)applyMappingsFromObject:(id)sourceObject;
-- (void)applyMappingsFromObject:(id)sourceObject error:(NSError **)error;
+- (BOOL)applyMappingsFromObject:(id)sourceObject;
+- (BOOL)applyMappingsFromObject:(id)sourceObject error:(NSError **)error;
 
 
 @end

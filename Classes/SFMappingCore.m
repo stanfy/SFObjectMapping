@@ -112,16 +112,16 @@ static NSMutableDictionary * _mappers;
 #pragma mark - Applying Mappings
 
 
-+ (id)applyMappingsOnObject:(id)objinstance fromObject:(id)object {
++ (BOOL)applyMappingsOnObject:(id)objinstance fromObject:(id)object {
     return [self applyMappingsOnObject:objinstance fromObject:object error:nil];
     
 }
 
 
-+ (id)applyMappingsOnObject:(id)destObject fromObject:(id)sourceObject error:(NSError **)error {
++ (BOOL)applyMappingsOnObject:(id)destObject fromObject:(id)sourceObject error:(NSError **)error {
     
     if (!sourceObject) {
-        return destObject;
+        return NO;
     }
     // getting mappings
     NSMutableArray * mappings = [self filteredMappingsForObject:destObject];
@@ -176,8 +176,7 @@ static NSMutableDictionary * _mappers;
         }
         
     }
-    return destObject;
-    
+    return YES;
 }
 
 

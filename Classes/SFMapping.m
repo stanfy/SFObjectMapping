@@ -1,6 +1,6 @@
 //
 //  SFMapping.m
-//  Nemlig-iPad
+//  SFObjectMapping
 //
 //  Created by Paul Taykalo on 6/7/12.
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
@@ -9,16 +9,6 @@
 #import "SFMapping.h"
 
 @implementation SFMapping
-
-@synthesize
-property = _property,
-classString = _classString,
-keyPath = _keyPath,
-itemClass = _itemClass,
-collection = _collection,
-userInfo = _userInfo,
-customParser = _customParser;
-
 
 - (NSString *)description {
     NSMutableString *str = [NSMutableString string];
