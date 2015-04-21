@@ -6,3 +6,4 @@ SFMappingUnitTests/build
 SFMappingUnitTests/test-reports
 Pods
 *.xcuserstate
+SFObjectMapping/SFObjectMapping.xcodeproj/xcuserdata
