@@ -11,6 +11,7 @@
 #import "TestProperty.h"
 #import "NSObject+SFMapping.h"
 #import "SFMapping.h"
+#import "SFDateMapper.h"
 
 
 SPEC_BEGIN(SFMappingCasesSpec)
@@ -116,6 +117,25 @@ describe(@"SFMappingCore", ^{
                 [[theValue(object.doubleProperty) should] equal:theValue(15.5)];
             });
 
+        });
+    });
+
+
+    context(@"When mapping with custom mapper", ^{
+        __block TestProperty * object;
+        __block id<SFMapper> customMapper;
+        __block id mapping;
+        context(@"And mapping is found", ^{
+            beforeEach(^{
+                customMapper = [KWMock nullMockForProtocol:@protocol(SFMapper)];
+                mapping = [[SFMapping property:@"dateProperty" toKeyPath:@"value"] applyCustomMapper:customMapper];
+                [TestProperty setSFMappingInfo:mapping, nil];
+            });
+            it(@"should call custom mapper with mapping and value", ^{
+                NSNull *value = [NSNull null];
+                [[(KWMock *)customMapper should] receive:@selector(applyMapping:onObject:withValue:error:) withArguments:mapping, [KWAny any], value, nil];
+                object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : value}];
+            });
         });
     });
 
