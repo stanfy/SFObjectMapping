@@ -6,6 +6,7 @@
 #import "SFNSArrayMapper.h"
 #import "SFMapping.h"
 #import "SFMappingCore.h"
+#import "NSError+SFMapping.h"
 
 
 @implementation SFNSArrayMapper
@@ -26,21 +27,20 @@
                     [result addObject:item];
                 }
                 [self setValue:result forKey:mapping.property onObject:object];
+                return YES;
+            } else {
+                if (error) {
+                    *error = [NSError sfItemClassDoesNotExitsErrorWithMapping:mapping object:object value:value];
+                }
+                return NO;
             }
-        } else {
-
         }
-    } else {
-
-        // TODO : Correct handling NSArray as not collection
-        // What should we do here instantiate array with what ?
-
-        NSLog(@"%@ Couldn't convert value : %@ to NSArray", self, value);
-        if (error) {
-            *error = [NSError errorWithDomain:@"Not implemented mapping" code:-1 userInfo:nil];
-        }
-
     }
-    return YES;
+    if (error) {
+        *error = [NSError sfMappingErrorWithMapping:mapping object:object value:value];
+    }
+    return NO;
+
 }
+
 @end

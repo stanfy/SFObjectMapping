@@ -20,5 +20,7 @@
 @property(nonatomic, assign) CGRect rectProperty;
 @property(nonatomic, assign) BOOL boolProperty;
 @property(nonatomic, strong) NSDate* dateProperty;
+@property(nonatomic, strong) NSArray* arrayProperty;
+@property(nonatomic, strong) NSMutableArray* mutableArrayProperty;
 
 @end

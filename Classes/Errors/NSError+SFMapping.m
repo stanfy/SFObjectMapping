@@ -16,7 +16,7 @@ NSString *kSFMappingErrorDomain = @"com.stanfy.sfmapping";
     return [NSError sfMappingErrorWithError:nil code:SFMappingErrorCodeUnknown message:nil];
 }
 
-+ (NSError *)sfMappingErrorWithCode:(NSUInteger)code message:(NSString *)message {
++ (NSError *)sfMappingErrorWithCode:(SFMappingErrorCode)code message:(NSString *)message {
     return [NSError sfMappingErrorWithError:nil code:code message:message];
 }
 
@@ -43,7 +43,11 @@ NSString *kSFMappingErrorDomain = @"com.stanfy.sfmapping";
 
 
 + (NSError *)sfMappingErrorWithMapping:(SFMapping *)mapping object:(NSObject *)object value:(id)value {
-    return [self sfMappingErrorWithCode:SFMappingErrorCodeCannotPerformMapping message:[NSString stringWithFormat:@"Cannot apply mapping %@  with value %@ on %@", mapping, value , NSStringFromClass(object.class)]];
+    return [self sfMappingErrorWithCode:SFMappingErrorCodeCannotPerformMapping message:[NSString stringWithFormat:@"Cannot apply mapping %@  with value %@ on %@", mapping, value, NSStringFromClass(object.class)]];
+}
+
++ (NSError *)sfItemClassDoesNotExitsErrorWithMapping:(SFMapping *)mapping object:(NSObject *)object value:(id)value {
+    return [self sfMappingErrorWithCode:SFMappingErrorCodeItemClassDoesNotExists message:[NSString stringWithFormat:@"Cannot apply mapping %@  with value %@ on %@ - Cannot create instance of %@ class", mapping, value, NSStringFromClass(object.class), mapping.itemClass]];
 }
 
 
