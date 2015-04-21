@@ -21,6 +21,13 @@
 
 
 /**
+Creates binding information for |property| name to |property| keypath
+Property class is determined at runtime
+@return SFMapping
+*/
++ (id)property:(NSString *)property;
+
+/**
  Creates binding information for |property| name to |keyPath|
  Property class is determined at runtime
  @return SFMapping

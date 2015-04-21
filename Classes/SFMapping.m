@@ -54,6 +54,10 @@
 
 #pragma mark - Public initializers -
 
++ (id)property:(NSString *)property {
+    return [self withProperty:property classString:nil andKeyPath:property isCollection:NO itemClass:nil];
+}
+
 + (id)property:(NSString *)property toKeyPath:(NSString *)keyPath {
    return [self withProperty:property classString:nil andKeyPath:keyPath isCollection:NO itemClass:nil];
 }

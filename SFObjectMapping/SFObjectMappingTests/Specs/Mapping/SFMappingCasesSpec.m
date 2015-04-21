@@ -182,7 +182,34 @@ describe(@"SFMappingCore", ^{
                 [[(KWMock *)customMapper should] receive:@selector(applyMapping:onObject:withValue:error:) withArguments:mapping, [KWAny any], value, nil];
                 object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : value}];
             });
+        });
+    });
 
+    context(@"When userInfo is set on SFMapping", ^{
+        __block SFMapping * mapping;
+        __block NSObject * userInfo;
+
+        beforeEach(^{
+            userInfo = [NSObject new];
+            mapping = [[SFMapping property:@"dateProperty" toKeyPath:@"value"] applyUserInfo:userInfo];
+        });
+
+        it(@"should be accessible via userInfo property", ^{
+            [[[mapping userInfo] shouldNot] beNil];
+            [[[mapping userInfo] should] equal:userInfo];
+        });
+    });
+
+    context(@"When only property is specified on SFMapping", ^{
+        __block TestProperty * object;
+        __block id mapping;
+
+        it(@"should correctly get value from the same keypath as property", ^{
+            mapping = [SFMapping property:@"numberProperty"];
+            [TestProperty setSFMappingInfo:mapping, nil];
+            NSNumber *value = @12;
+            object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"numberProperty" : value}];
+            [[[object numberProperty] should] equal:value];
         });
     });
 
