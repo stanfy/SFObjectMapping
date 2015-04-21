@@ -213,6 +213,62 @@ describe(@"SFMappingCore", ^{
         });
     });
 
+
+    context(@"When keypath is empty in mapping", ^{
+        __block TestProperty * object;
+        __block id mapping;
+
+        it(@"should use source object itself as value", ^{
+            mapping = [SFMapping property:@"numberProperty" toKeyPath:@""];
+            [TestProperty setSFMappingInfo:mapping, nil];
+            NSNumber *value = @12;
+            object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:value];
+            [[[object numberProperty] should] equal:value];
+        });
+    });
+
+
+    context(@"When using instanceOfClass", ^{
+        __block Class cls;
+        __block id object;
+        context(@"with NSString", ^{
+            beforeEach(^{
+                cls = [NSString class];
+            });
+
+            it(@"should ceate NSString object with the same value", ^{
+                NSString *value = @"COOL";
+                object = [SFMappingCore instanceOfClass:cls fromObject:value];
+                [[object should] equal:value];
+            });
+        });
+
+        context(@"with NSMutabnleString", ^{
+            beforeEach(^{
+                cls = [NSMutableString class];
+            });
+
+            it(@"should ceate NSString object with the same value", ^{
+                NSString *value = @"COOL";
+                object = [SFMappingCore instanceOfClass:cls fromObject:value];
+                [[object should] equal:value];
+            });
+        });
+
+        context(@"with NSNumber", ^{
+            beforeEach(^{
+                cls = [NSNumber class];
+            });
+
+            it(@"should ceate NSNumber object with the same value", ^{
+                NSNumber *value = @123.0;
+                object = [SFMappingCore instanceOfClass:cls fromObject:value];
+                [[object should] equal:value];
+            });
+        });
+
+    });
+
     afterEach(^{
         [TestProperty setSFMappingInfo:nil];
     });

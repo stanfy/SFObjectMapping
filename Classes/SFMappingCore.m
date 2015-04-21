@@ -192,7 +192,11 @@ static NSMutableDictionary * _mappers;
     if (objectClass == [NSString class] && sourceObject && [sourceObject isKindOfClass:[NSString class]]) {
         return sourceObject;
     }
-    
+
+    if (objectClass == [NSMutableString class] && sourceObject && [sourceObject isKindOfClass:[NSString class]]) {
+        return [(NSString *)sourceObject mutableCopy];
+    }
+
     // Quick instantiation for NSNumber sourceObject
     if (objectClass == [NSNumber class] && sourceObject && [sourceObject isKindOfClass:[NSNumber class]]) {
         return sourceObject;
