@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol SFMapper;
+
 @interface SFMappingCore : NSObject
 
 
@@ -19,19 +21,17 @@
 
 
 /**
- Adds mapper.
- Selector signature is not specified
- 
- It can be any selector with 3 parameters
- 1-st parameter is |bind| info of SFXMLBind class
- 2-nd parameter is |object| on which binding should be parsed
- 3-th parameter is XML |nodes| that was resolved by xpath
- 
- +(BOOL)applyNSArrayBinding:(SFXMLBind *)bind onObject:(id)object withNodes:(NSArray *)nodes;
- +(BOOL)applyCGSizeBinding:(SFXMLBind *)bind onObject:(id)object withNodes:(NSArray *)nodes;
+ Adds default system mapper for specified classOrStructName
+
+ The idea is next:
+ When we're creating object, and object property has X or Struct type,then
+this mapper will be used
+
  etc.
  */
-+ (void)registerMapper:(id)mapper forClass:(NSString *)classOrStructname selector:(SEL)selector;
++ (void)registerMapper:(id<SFMapper>)mapper forClass:(NSString *)classOrStructName selector:(SEL)selector DEPRECATED_MSG_ATTRIBUTE("Use registerMapper:forClass: instead");
++ (void)registerMapper:(id<SFMapper>)mapper forClass:(NSString *)classOrStructName;
++ (void)unregister:(id<SFMapper>)mapper forClass:(NSString *)classOrStructName;
 
 
 /**

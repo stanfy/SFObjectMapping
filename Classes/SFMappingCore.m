@@ -11,6 +11,7 @@
 #import "NSObject+SFMapping.h"
 #import "SFMapping.h"
 #import "SFMappingRuntime.h"
+#import "SFMapper.h"
 
 @implementation SFMappingCore
 
@@ -23,11 +24,12 @@ static NSMutableDictionary * _mappers;
 + (void)initialize {
     _mappers = [NSMutableDictionary dictionary];
     
-    // We have alot of parsers
+    // We have a lot of parsers
     // So we adding parser instance for each parse type
-    // Parser class format is SFXMLBinding<_type_>Parser
-    // SFXMLBindingNSNumberParser
-    // SFXMLBindingNSStringParser
+    // Parser class format is SF<_type_>Mapper
+    // SFNSNumberMapper
+    // SFNSStringMapper
+    // SFBOOLMapper
     // etc
     NSArray * parseTypes =
         @[@"NSNumber",
@@ -39,16 +41,25 @@ static NSMutableDictionary * _mappers;
     for (NSString * parseType in parseTypes) {
         Class mapperClass = NSClassFromString([NSString stringWithFormat:@"SF%@Mapper", parseType]);
         id mapperInstance = [mapperClass new];
-        SEL parserSelector = @selector(applyMapping:onObject:withValue:error:);
         if (mapperInstance) {
-            [self registerMapper:mapperInstance forClass:parseType selector:parserSelector];
+            [self registerMapper:mapperInstance forClass:parseType];
         }
     }
 }
 
 
-+ (void)registerMapper:(id)mapper forClass:(NSString *)classOrStructname selector:(SEL)selector {
-    [_mappers setObject:mapper forKey:classOrStructname];
++ (void)registerMapper:(id<SFMapper>)mapper forClass:(NSString *)classOrStructName selector:(SEL)selector {
+    [self registerMapper:mapper forClass:classOrStructName];
+}
+
++ (void)registerMapper:(id<SFMapper>)mapper forClass:(NSString *)classOrStructName {
+    _mappers[classOrStructName] = mapper;
+}
+
++ (void)unregister:(id<SFMapper>)mapper forClass:(NSString *)classOrStructName {
+    if (_mappers[classOrStructName] == mapper) {
+        [_mappers removeObjectForKey:classOrStructName];
+    }
 }
 
 

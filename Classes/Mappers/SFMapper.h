@@ -32,15 +32,6 @@
 - (BOOL)applyMapping:(SFMapping *)mapping onObject:(id)object withValue:(id)value error:(NSError **)error;
 
 
-/**
-  Method that should be implemented by mapper.
-  Sets specified value for specified key on specified object
-  In general it should do
-  object[key] = value
- */
-- (BOOL)setValue:(id)value forKey:(NSString *)key onObject:(id)object;
-
-
 @end
 
 
@@ -49,5 +40,12 @@
  and setValue:forKey:onObject: implementations
  */
 @interface SFMapper : NSObject<SFMapper>
+
+/**
+Sets specified value for specified key on specified object
+In general it should do
+object[key] = value
+*/
+- (BOOL)setValue:(id)value forKey:(NSString *)key onObject:(id)object;
 
 @end

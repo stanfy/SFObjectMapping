@@ -15,7 +15,6 @@
 
 - (BOOL)applyMapping:(SFMapping *)mapping onObject:(id)object withValue:(id)value error:(NSError **)error {
     [self setValue:value forKey:mapping.property onObject:object];
-    // TODO: Add eerrors handling
     return YES;
 }
 

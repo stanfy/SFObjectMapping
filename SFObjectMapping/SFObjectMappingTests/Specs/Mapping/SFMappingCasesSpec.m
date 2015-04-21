@@ -125,6 +125,7 @@ describe(@"SFMappingCore", ^{
         __block TestProperty * object;
         __block id<SFMapper> customMapper;
         __block id mapping;
+
         context(@"And mapping is found", ^{
             beforeEach(^{
                 customMapper = [KWMock nullMockForProtocol:@protocol(SFMapper)];
@@ -136,6 +137,52 @@ describe(@"SFMappingCore", ^{
                 [[(KWMock *)customMapper should] receive:@selector(applyMapping:onObject:withValue:error:) withArguments:mapping, [KWAny any], value, nil];
                 object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : value}];
             });
+        });
+    });
+
+    context(@"When global mapper registered", ^{
+        __block TestProperty * object;
+        __block id<SFMapper> globalMapper;
+        __block id<SFMapper> customMapper;
+        __block id mapping;
+        beforeEach(^{
+            globalMapper = [KWMock nullMockForProtocol:@protocol(SFMapper)];
+            [SFMappingCore registerMapper:globalMapper forClass:@"CGRect"];
+        });
+
+        afterEach(^{
+            [SFMappingCore unregister:globalMapper forClass:@"CGRect"];
+        });
+
+        context(@"And mapping is found", ^{
+            beforeEach(^{
+                mapping = [SFMapping property:@"rectProperty" toKeyPath:@"value"];
+                [TestProperty setSFMappingInfo:mapping, nil];
+            });
+            it(@"should call global mapper with mapping and value", ^{
+                NSNull *value = [NSNull null];
+                [[(KWMock *) globalMapper should] receive:@selector(applyMapping:onObject:withValue:error:) withArguments:mapping, [KWAny any], value, nil];
+                object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : value}];
+            });
+        });
+
+        context(@"And custom mapper is set on mapping", ^{
+            beforeEach(^{
+                customMapper = [KWMock nullMockForProtocol:@protocol(SFMapper)];
+                mapping = [[SFMapping property:@"rectProperty" toKeyPath:@"value"] applyCustomMapper:customMapper];
+                [TestProperty setSFMappingInfo:mapping, nil];
+            });
+            it(@"should not call global mapper with mapping and value", ^{
+                NSNull *value = [NSNull null];
+                [[(KWMock *) globalMapper shouldNot] receive:@selector(applyMapping:onObject:withValue:error:) withArguments:mapping, [KWAny any], value, nil];
+                object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : value}];
+            });
+            it(@"should call custom mapper with mapping and value", ^{
+                NSNull *value = [NSNull null];
+                [[(KWMock *)customMapper should] receive:@selector(applyMapping:onObject:withValue:error:) withArguments:mapping, [KWAny any], value, nil];
+                object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : value}];
+            });
+
         });
     });
 
