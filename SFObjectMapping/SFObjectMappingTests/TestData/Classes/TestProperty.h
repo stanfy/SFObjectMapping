@@ -12,7 +12,7 @@
 @interface TestProperty : NSObject
 
 @property(nonatomic, strong) NSString *stringProperty;
-@property(nonatomic, assign) NSNumber * numberProperty;
+@property(nonatomic, strong) NSNumber * numberProperty;
 @property(nonatomic, assign) int intProperty;
 @property(nonatomic, assign) long longProperty;
 @property(nonatomic, assign) float floatProperty;

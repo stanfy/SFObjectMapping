@@ -63,6 +63,58 @@ describe(@"SFMappingCore", ^{
                 object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : @"0"}];
                 [[theValue(object.boolProperty) should] beFalse];
             });
+        });
+    });
+
+
+    context(@"When mapping Numbers property", ^{
+        __block TestProperty * object;
+        context(@"And mapping is found", ^{
+            beforeEach(^{
+                [TestProperty setSFMappingInfo:
+                    [SFMapping property:@"numberProperty" toKeyPath:@"value"],
+                    [SFMapping property:@"intProperty" toKeyPath:@"value"],
+                    [SFMapping property:@"longProperty" toKeyPath:@"value"],
+                    [SFMapping property:@"floatProperty" toKeyPath:@"value"],
+                    [SFMapping property:@"doubleProperty" toKeyPath:@"value"],
+                        nil];
+            });
+            it(@"should be mapped from dictionary [NSNull null]", ^{
+                object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : [NSNull null]}];
+                [[object.numberProperty should] equal:@0];
+                [[theValue(object.intProperty) should] equal:theValue(0)];
+                [[theValue(object.longProperty) should] equal:theValue(0)];
+                [[theValue(object.floatProperty) should] equal:theValue(0)];
+                [[theValue(object.doubleProperty) should] equal:theValue(0)];
+            });
+
+
+            it(@"should be mapped from dictionary when value is float (15.5)", ^{
+                object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : @15.5}];
+                [[object.numberProperty should] equal:@15.5];
+                [[theValue(object.intProperty) should] equal:theValue(15)];
+                [[theValue(object.longProperty) should] equal:theValue(15)];
+                [[theValue(object.floatProperty) should] equal:theValue(15.5)];
+                [[theValue(object.doubleProperty) should] equal:theValue(15.5)];
+            });
+
+            it(@"should be mapped from dictionary when value is float (-20)", ^{
+                object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : @(-20)}];
+                [[object.numberProperty should] equal:@-20];
+                [[theValue(object.intProperty) should] equal:theValue(-20)];
+                [[theValue(object.longProperty) should] equal:theValue(-20)];
+                [[theValue(object.floatProperty) should] equal:theValue(-20)];
+                [[theValue(object.doubleProperty) should] equal:theValue(-20)];
+            });
+
+            it(@"should be mapped from dictionary when value is string '15.5'", ^{
+                object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : @"15.5"}];
+                [[object.numberProperty should] equal:@15.5];
+                [[theValue(object.intProperty) should] equal:theValue(15)];
+                [[theValue(object.longProperty) should] equal:theValue(15)];
+                [[theValue(object.floatProperty) should] equal:theValue(15.5)];
+                [[theValue(object.doubleProperty) should] equal:theValue(15.5)];
+            });
 
         });
     });
