@@ -1,6 +1,6 @@
 //
 //  SFMapping.h
-//  Nemlig-iPad
+//  SFObjectMapping
 //
 //  Created by Paul Taykalo on 6/7/12.
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
@@ -9,25 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "SFMapper.h"
 
-@interface SFMapping : NSObject {
-@private
-   NSString * _property;
-   NSString * _classString;
-   NSString * _keyPath;
-   NSString * _itemClass;
-   BOOL _collection;
-   id _userInfo;
-   id<SFMapper> _customParser;
-}
+@interface SFMapping : NSObject
 
 @property (nonatomic, copy) NSString * property;
 @property (nonatomic, copy) NSString * classString;
 @property (nonatomic, copy) NSString * keyPath;
 @property (nonatomic, copy) NSString * itemClass;
 @property (nonatomic, assign) BOOL collection;
-@property (nonatomic, retain) id userInfo;
-@property (nonatomic, retain) id<SFMapper> customParser;
+@property (nonatomic, strong) id userInfo;
+@property (nonatomic, strong) id<SFMapper> customParser;
 
+
+/**
+Creates binding information for |property| name to |property| keypath
+Property class is determined at runtime
+@return SFMapping
+*/
++ (id)property:(NSString *)property;
 
 /**
  Creates binding information for |property| name to |keyPath|

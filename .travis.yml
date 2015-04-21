@@ -1,0 +1,8 @@
+language: objective-c
+before_install:
+  - sudo easy_install cpp-coveralls
+
+script:
+  - xctool test
+
+after_success: ./SFObjectMapping/SFObjectMappingTests/Scripts/coveralls.sh

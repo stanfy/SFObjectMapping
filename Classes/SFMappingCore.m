@@ -11,6 +11,7 @@
 #import "NSObject+SFMapping.h"
 #import "SFMapping.h"
 #import "SFMappingRuntime.h"
+#import "SFMapper.h"
 
 @implementation SFMappingCore
 
@@ -23,34 +24,42 @@ static NSMutableDictionary * _mappers;
 + (void)initialize {
     _mappers = [NSMutableDictionary dictionary];
     
-    // We have alot of parsers
+    // We have a lot of parsers
     // So we adding parser instance for each parse type
-    // Parser class format is SFXMLBinding<_type_>Parser
-    // SFXMLBindingNSNumberParser
-    // SFXMLBindingNSStringParser
+    // Parser class format is SF<_type_>Mapper
+    // SFNSNumberMapper
+    // SFNSStringMapper
+    // SFBOOLMapper
     // etc
     NSArray * parseTypes =
-    [NSArray arrayWithObjects:
-     @"NSNumber",
-     @"NSString",
-     @"NSArray",
-     @"BOOL",
-     nil];
+        @[@"NSNumber",
+            @"NSString",
+            @"NSArray",
+            @"BOOL"];
     
     // Adding mapper for each map name
     for (NSString * parseType in parseTypes) {
         Class mapperClass = NSClassFromString([NSString stringWithFormat:@"SF%@Mapper", parseType]);
         id mapperInstance = [mapperClass new];
-        SEL parserSelector = @selector(applyMapping:onObject:withValue:error:);
         if (mapperInstance) {
-            [self registerMapper:mapperInstance forClass:parseType selector:parserSelector];
+            [self registerMapper:mapperInstance forClass:parseType];
         }
     }
 }
 
 
-+ (void)registerMapper:(id)mapper forClass:(NSString *)classOrStructname selector:(SEL)selector {
-    [_mappers setObject:mapper forKey:classOrStructname];
++ (void)registerMapper:(id<SFMapper>)mapper forClass:(NSString *)classOrStructName selector:(SEL)selector {
+    [self registerMapper:mapper forClass:classOrStructName];
+}
+
++ (void)registerMapper:(id<SFMapper>)mapper forClass:(NSString *)classOrStructName {
+    _mappers[classOrStructName] = mapper;
+}
+
++ (void)unregister:(id<SFMapper>)mapper forClass:(NSString *)classOrStructName {
+    if (_mappers[classOrStructName] == mapper) {
+        [_mappers removeObjectForKey:classOrStructName];
+    }
 }
 
 
@@ -95,35 +104,18 @@ static NSMutableDictionary * _mappers;
 }
 
 
-/*
- Mapper info is array with two items:
- [0] Mapper
- [1] selector in always applyMapping:onObject:fromObject:error:
- */
-+ (void)performMappingWithMapperInfo:(id<SFMapper>)mapper mapping:(SFMapping *)mapping objInstance:(id)objinstance value:(id)value error:(NSError **)error {
-    SEL mapperSelector = @selector(applyMapping:onObject:withValue:error:);
-    if (mapperSelector && [mapper respondsToSelector:mapperSelector]) {
-        [mapper applyMapping:mapping onObject:objinstance withValue:value error:error];
-    } else {
-        // TODO : Do correct error handling
-        NSLog(@"Couldnt find method signature for selector : %@ of %@", NSStringFromSelector(mapperSelector), mapper);
-    }
-}
-
-
 #pragma mark - Applying Mappings
 
 
-+ (id)applyMappingsOnObject:(id)objinstance fromObject:(id)object {
++ (BOOL)applyMappingsOnObject:(id)objinstance fromObject:(id)object {
     return [self applyMappingsOnObject:objinstance fromObject:object error:nil];
     
 }
 
-
-+ (id)applyMappingsOnObject:(id)destObject fromObject:(id)sourceObject error:(NSError **)error {
++ (BOOL)applyMappingsOnObject:(id)destObject fromObject:(id)sourceObject error:(NSError **)error {
     
     if (!sourceObject) {
-        return destObject;
+        return NO;
     }
     // getting mappings
     NSMutableArray * mappings = [self filteredMappingsForObject:destObject];
@@ -140,36 +132,23 @@ static NSMutableDictionary * _mappers;
         // Checking for custom binding custom parsing
         if (mapping.customParser) {
             // TODO : Correct error handling
-            [mapping.customParser applyMapping:mapping onObject:destObject withValue:value error:nil];
+            [mapping.customParser applyMapping:mapping onObject:destObject withValue:value error:error];
             continue;
         }
         
         // resolving string property class name
         NSString * className = [mapping classString];
-        id<SFMapper> mapper = [_mappers objectForKey:className];
-        
-        if (!mapper) {
-            
-            // If we have not mapper for this class name
-            // We'll search mapper for it's superclass, if any
-            Class clz = NSClassFromString(className);
-            while (!mapper && clz) {
-                clz = class_getSuperclass(clz);
-                if (clz) {
-                    mapper = [_mappers objectForKey:NSStringFromClass(clz)];
-                }
-            }
-        }
-        
-        SEL mapperSelector = @selector(applyMapping:onObject:withValue:error:);
-        
+        id <SFMapper> mapper = [self mapperForTypeName:className];
+
         // If we have correct mapper for specified class string
-        if (mapperSelector && [mapper respondsToSelector:mapperSelector]) {
+        if (mapper) {
             //TODO : Correct error handling
-            [self performMappingWithMapperInfo:mapper mapping:mapping objInstance:destObject value:value error:nil];
+            [mapper applyMapping:mapping onObject:destObject withValue:value error:error];
+
         } else {
-            if (sourceObject && value && value != [NSNull null]) {
+            if (value && value != [NSNull null]) {
                 Class clz = NSClassFromString(className);
+                // TODO : Correct instantiation
                 id instance = [self instanceOfClass:clz fromObject:value];
                 //TODO : Correct error handling
                 //  [self applyMappingsOnObject:destObject fromObject:sourceObject error:nil];
@@ -178,10 +157,28 @@ static NSMutableDictionary * _mappers;
         }
         
     }
-    return destObject;
-    
+    return YES;
 }
 
+
++ (id <SFMapper>)mapperForTypeName:(NSString *)classOrStructName {
+    id <SFMapper> mapper = _mappers[classOrStructName];
+    if (!mapper) {
+        // If we have not mapper for this class name
+        // We'll search mapper for it's superclass, if any
+        Class clz = NSClassFromString(classOrStructName);
+        while (!mapper && clz) {
+            clz = class_getSuperclass(clz);
+            if (clz) {
+                mapper = _mappers[NSStringFromClass(clz)];
+            }
+        }
+    }
+    return mapper;
+}
+
+
+#pragma mark - Instantiation
 
 + (id)instanceOfClass:(Class)objectClass fromObject:(id)object {
     return [self instanceOfClass:objectClass fromObject:object error:nil];
@@ -195,7 +192,11 @@ static NSMutableDictionary * _mappers;
     if (objectClass == [NSString class] && sourceObject && [sourceObject isKindOfClass:[NSString class]]) {
         return sourceObject;
     }
-    
+
+    if (objectClass == [NSMutableString class] && sourceObject && [sourceObject isKindOfClass:[NSString class]]) {
+        return [(NSString *)sourceObject mutableCopy];
+    }
+
     // Quick instantiation for NSNumber sourceObject
     if (objectClass == [NSNumber class] && sourceObject && [sourceObject isKindOfClass:[NSNumber class]]) {
         return sourceObject;

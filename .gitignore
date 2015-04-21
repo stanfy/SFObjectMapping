@@ -4,3 +4,6 @@ SFMappingUnitTests/SFMappingUnitTests.xcodeproj/project.xcworkspace/xcuserdata
 SFMappingUnitTests/.idea
 SFMappingUnitTests/build
 SFMappingUnitTests/test-reports
+Pods
+*.xcuserstate
+SFObjectMapping/SFObjectMapping.xcodeproj/xcuserdata
