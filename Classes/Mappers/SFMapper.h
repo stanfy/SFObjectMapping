@@ -18,8 +18,7 @@
  
  I.e.
  
- + (BOOL)applyMapping:(SFMapping *)mapping onObject:(id)object fromObject:(id)sourceObject error:(NSError **)error;
- [SFMappingCore registerMapper:self forClass:@"NSArray" selector:@selector(applyNSArrayBinding:onObject:withNodes:)];
+ [SFMappingCore registerMapper:[SFMapper new] forClass:@"NSArray"];
  
  */
 @protocol SFMapper<NSObject>

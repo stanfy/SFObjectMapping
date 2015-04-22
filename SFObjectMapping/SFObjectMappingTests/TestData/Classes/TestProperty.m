@@ -7,6 +7,8 @@
 //
 
 #import "TestProperty.h"
+#import "TestProtocol.h"
+#import "CustomRootObject.h"
 
 @implementation TestProperty
 

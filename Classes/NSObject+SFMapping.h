@@ -17,8 +17,7 @@
 
 
 /**
- Sets XML binding info for specified class.
- Can be setted in any time, but it is desirable that it should be in +initialize method
+ Sets mapping information  for specified class.
  */
 + (void)setSFMappingInfo:(id)object, ... NS_REQUIRES_NIL_TERMINATION;
 

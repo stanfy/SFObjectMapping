@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@protocol TestProtocol;
+
+@protocol CustomRootObject
+@end
+
 @interface TestProperty : NSObject
 
 @property(nonatomic, strong) NSString *stringProperty;
@@ -22,5 +27,6 @@
 @property(nonatomic, strong) NSDate* dateProperty;
 @property(nonatomic, strong) NSArray* arrayProperty;
 @property(nonatomic, strong) NSMutableArray* mutableArrayProperty;
+
 
 @end

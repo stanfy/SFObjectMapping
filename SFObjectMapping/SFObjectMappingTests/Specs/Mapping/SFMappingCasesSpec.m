@@ -12,6 +12,7 @@
 #import "NSObject+SFMapping.h"
 #import "SFMapping.h"
 #import "SFDateMapper.h"
+#import "TestPropertiesWithProtocols.h"
 
 
 SPEC_BEGIN(SFMappingCasesSpec)
@@ -66,6 +67,33 @@ describe(@"SFMappingCore", ^{
             });
         });
     });
+
+    context(@"When mapping collection property", ^{
+        __block TestProperty * object;
+        context(@"NSArray", ^{
+            beforeEach(^{
+                [TestProperty setSFMappingInfo:[SFMapping collection:@"arrayProperty" itemClass:@"NSString" toKeyPath:@"value"], nil];
+            });
+            it(@"should be mapped correctly", ^{
+                object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : @[ @"1", @"2"]}];
+                [[object.arrayProperty shouldNot] beNil];
+                [[object.arrayProperty should] equal:@[ @"1", @"2"]];
+            });
+        });
+
+        context(@"NSMutableArray", ^{
+            beforeEach(^{
+                [TestProperty setSFMappingInfo:[SFMapping collection:@"mutableArrayProperty" itemClass:@"NSString" toKeyPath:@"value"], nil];
+            });
+            it(@"should be mapped correctly", ^{
+                object = [SFMappingCore instanceOfClass:[TestProperty class] fromObject:@{@"value" : @[ @"1", @"2"]}];
+                [[object.mutableArrayProperty shouldNot] beNil];
+                [[object.mutableArrayProperty should] equal:@[ @"1", @"2"]];
+            });
+        });
+
+    });
+
 
 
     context(@"When mapping Numbers property", ^{
@@ -270,7 +298,7 @@ describe(@"SFMappingCore", ^{
     });
 
 
-    context(@"when created value transformer", ^{
+    context(@"when value transformer created", ^{
         __block SFMapping * mapping;
         __block SFMapping * mapping2;
 
@@ -334,6 +362,36 @@ describe(@"SFMappingCore", ^{
 
 
         });
+    });
+
+
+    context(@"When property of type with protocol", ^{
+        context(@"non-collection type", ^{
+            SFDateMapper *dateMapper = [SFDateMapper rfc2882DateTimeMapper];
+            beforeEach(^{
+                [SFMappingCore registerMapper:dateMapper forClass:@"NSDate"];
+                [TestPropertiesWithProtocols setSFMappingInfo:
+                    [SFMapping property:@"dateWithProtocolProperty"],
+                    [SFMapping property:@"dateWithMultipleProtocolsProperty"],
+                        nil];
+            });
+            it(@"should be correctly mapped", ^{
+                TestPropertiesWithProtocols * result = [SFMappingCore instanceOfClass:TestPropertiesWithProtocols.class fromObject:@{@"dateWithProtocolProperty" : @"Wed, 22 Apr 2015 15:20:11 GMT"}];
+                [[[result dateWithProtocolProperty] shouldNot] beNil];
+                [[[result dateWithProtocolProperty] should] beKindOfClass:[NSDate class]];
+            });
+
+            it(@"should be correctly mapped", ^{
+                TestPropertiesWithProtocols * result = [SFMappingCore instanceOfClass:TestPropertiesWithProtocols.class fromObject:@{@"dateWithMultipleProtocolsProperty" : @"Wed, 22 Apr 2015 15:20:11 GMT"}];
+                [[[result dateWithMultipleProtocolsProperty] shouldNot] beNil];
+                [[[result dateWithMultipleProtocolsProperty] should] beKindOfClass:[NSDate class]];
+            });
+
+            afterEach(^{
+                [SFMappingCore unregister:dateMapper forClass:@"NSDate"];
+            });
+        });
+
     });
 
     afterEach(^{
