@@ -160,6 +160,7 @@ static NSMutableDictionary * _mappers;
     return YES;
 }
 
+#pragma mark - Mapper for class or struct name
 
 + (id <SFMapper>)mapperForTypeName:(NSString *)classOrStructName {
     id <SFMapper> mapper = _mappers[classOrStructName];
@@ -207,7 +208,7 @@ static NSMutableDictionary * _mappers;
     id instance = [objectClass new];
     
     // Applying mappings
-    [instance applyMappingsFromObject:sourceObject];
+    [instance applyMappingsFromObject:sourceObject error:error];
     return instance;
 }
 

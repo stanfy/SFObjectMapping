@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 Stanfy LLC. All rights reserved.
 //
 
+#import <SFObjectMapping/SFMappingCore.h>
 #import "ViewController.h"
+#import "SFBaseResponse.h"
 
 @interface ViewController ()
 
@@ -17,6 +19,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    [self parseAllPossibleResponses];
+}
+
+- (void)parseAllPossibleResponses {
+
+    // Base response
+    SFBaseResponse *response = [self parseResponseOfClass:SFBaseResponse.class fromResouce:@"response.json"];
+    NSAssert(response, @"Response should be parsed and correctly mapped");
+    NSAssert(response.statusCode == 1, @"Response status code should be correclty mapped");
+    NSAssert([response.message isEqualToString:@"OK"], @"Response mesage should be correclty mapped");
+    NSLog(@"Successfully parsed %@ %@", NSStringFromClass(response.class), response);
+
+
+
+}
+
+- (SFBaseResponse *)parseResponseOfClass:(Class)pClass fromResouce:(NSString *)resouce {
+    // Get JSON
+    NSURL *url = [[NSBundle mainBundle] URLForResource:[resouce stringByDeletingPathExtension] withExtension:[resouce pathExtension]];
+    NSData * data = [NSData dataWithContentsOfURL:url options:0 error:nil];
+    id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+
+    id result = [SFMappingCore instanceOfClass:pClass fromObject:json];
+    
+    return result;
 }
 
 - (void)didReceiveMemoryWarning {
