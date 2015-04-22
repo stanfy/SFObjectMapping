@@ -103,6 +103,47 @@ Mapping:
  }
 ```
 
+Enums
+-------
+There's two suggested variants how you can map properties.  
+First one is to register global mapper with fake classname   
+Second one is to use custom mapper right in the mapping definition  
+```objc
+/*
+Register global mapper for all types of SFUserGender
+ */
+NSDictionary *userGenderDictionary =
+    @{@"female" : @(SFUserGenderFemale),
+        @"male" : @(SFUserGenderMale)
+    };
+
+NSDictionary *userTypeDictionary =
+    @{@"premium" : @(SFUserTypePremium),
+        @"normal" : @(SFUserTypeNormal)
+    };
+    
+// Registering mapper for fake class named SFUserGender
+[SFMappingCore registerMapper:
+    [SFBlockBasedMapper mapperWithValueTransformBlock:^id(SFMapping *mapping, id value) {
+        return value ? userGenderDictionary[value] : nil;
+    }] forClass:@"SFUserGender"];
+
+
+[SFUser setSFMappingInfo:
+    // Simple mapping
+    [SFMapping property:@"name"],
+
+    // Here we're specifying this property "class", since we registered global mapper for this class previously
+    [SFMapping property:@"gender" classString:@"SFUserGender"],       // gender in JSON
+
+    // Here we're specifying custom mapper which is used only for this mapping
+    [SFMapping property:@"userType" keyPath:@"type" valueBlock:^id(SFMapping *mapping, id value) {
+       return value ? userTypeDictionary[value] : nil;;
+    }],
+    nil
+];
+```
+
 Objects
 -------
 
