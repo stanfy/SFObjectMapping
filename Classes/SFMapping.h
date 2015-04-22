@@ -25,14 +25,21 @@ Creates binding information for |property| name to |property| keypath
 Property class is determined at runtime
 @return SFMapping
 */
-+ (id)property:(NSString *)property;
++ (instancetype)property:(NSString *)property;
+
+/**
+Creates binding information for |property| name to |property| keypath
+Property class is determined at runtime
+@return SFMapping
+*/
++ (instancetype)property:(NSString *)property classString:(NSString *)classString;
 
 /**
  Creates binding information for |property| name to |keyPath|
  Property class is determined at runtime
  @return SFMapping
  */
-+ (id)property:(NSString *)property toKeyPath:(NSString *)keyPath;
++ (instancetype)property:(NSString *)property toKeyPath:(NSString *)keyPath;
 
 
 /**
@@ -40,15 +47,23 @@ Property class is determined at runtime
  Since property class is specified, works a little bit faster than previous function
  @return SFMapping
  */
-+ (id)property:(NSString *)property classString:(NSString *)classString toKeyPath:(NSString *)keyPath;
++ (instancetype)property:(NSString *)property classString:(NSString *)classString toKeyPath:(NSString *)keyPath;
 
+
+
+/**
+Binds collection |property|(NSArray, NSSet) with items of |itemClass| to |keyPath|
+Collection property class is determined at runtime
+@return SFMapping
+*/
++ (instancetype)collection:(NSString *)property itemClass:(NSString *)itemClass;
 
 /**
  Binds collection |property|(NSArray, NSSet) with items of |itemClass| to |keyPath|
  Collection property class is determined at runtime
  @return SFMapping
  */
-+ (id)collection:(NSString *)property itemClass:(NSString *)itemClass toKeyPath:(NSString *)keyPath;
++ (instancetype)collection:(NSString *)property itemClass:(NSString *)itemClass toKeyPath:(NSString *)keyPath;
 
 
 /**
@@ -56,7 +71,7 @@ Property class is determined at runtime
  Since collection property class is specified, works a little bit faster than previous function
  @return SFMapping
  */
-+ (id)collection:(NSString *)property classString:(NSString *)classString itemClass:(NSString *)itemClass toKeyPath:(NSString *)keyPath;
++ (instancetype)collection:(NSString *)property classString:(NSString *)classString itemClass:(NSString *)itemClass toKeyPath:(NSString *)keyPath;
 
 
 /**
@@ -71,5 +86,22 @@ Property class is determined at runtime
  @return self
  */
 - (id)applyCustomMapper:(id<SFMapper>)customMapper;
+
+@end
+
+
+@interface SFMapping (BlockMapping)
+
+/*
+Map property with |property| name to the values from the object with the same keypath name, transformed with specified block
+ obj.property = transform(source.property)
+ */
++ (instancetype)property:(NSString *)property valueBlock:(id (^)(SFMapping * mapping, id value))valueTransformer;
+
+/*
+Map property with |property| name to the values from the object with the same keypath name, transformed with specified block
+ obj.property = transform(source.keypath)
+ */
++ (instancetype)property:(NSString *)property keyPath:(NSString *)keypath valueBlock:(id (^)(SFMapping * mapping, id value))valueTransformer;
 
 @end

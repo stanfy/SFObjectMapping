@@ -7,6 +7,7 @@
 //
 
 #import "SFMapping.h"
+#import "SFBlockBasedMapper.h"
 
 @implementation SFMapping
 
@@ -36,59 +37,76 @@
 
 #pragma mark - Private initializer -
 
-+ (id)withProperty:(NSString *)property
++ (instancetype)withProperty:(NSString *)property
        classString:(NSString *)classString
-          andKeyPath:(NSString *)keyPath
+        andKeyPath:(NSString *)keyPath
       isCollection:(BOOL)collection
-         itemClass:(NSString *)itemClass
-{
-   SFMapping * result = [self new];
-   result.property = property;
-   result.keyPath = keyPath;
-   result.collection = collection;
-   result.itemClass = itemClass;
-   result.classString = classString;
-   return result;
+         itemClass:(NSString *)itemClass {
+    SFMapping *result = [self new];
+    result.property = property;
+    result.keyPath = keyPath;
+    result.collection = collection;
+    result.itemClass = itemClass;
+    result.classString = classString;
+    return result;
 }
 
 
 #pragma mark - Public initializers -
 
-+ (id)property:(NSString *)property {
++ (instancetype)property:(NSString *)property {
     return [self withProperty:property classString:nil andKeyPath:property isCollection:NO itemClass:nil];
 }
 
-+ (id)property:(NSString *)property toKeyPath:(NSString *)keyPath {
-   return [self withProperty:property classString:nil andKeyPath:keyPath isCollection:NO itemClass:nil];
++ (instancetype)property:(NSString *)property classString:(NSString *)classString {
+    return [self withProperty:property classString:classString andKeyPath:property isCollection:NO itemClass:nil];
 }
 
 
-+ (id)property:(NSString *)property classString:(NSString *)classString toKeyPath:(NSString *)keyPath {
-   return [self withProperty:property classString:classString andKeyPath:keyPath isCollection:NO itemClass:nil];
++ (instancetype)property:(NSString *)property toKeyPath:(NSString *)keyPath {
+    return [self withProperty:property classString:nil andKeyPath:keyPath isCollection:NO itemClass:nil];
 }
 
 
-+ (id)collection:(NSString *)property itemClass:(NSString *)itemClass toKeyPath:(NSString *)keyPath {
-   return [self withProperty:property classString:nil andKeyPath:keyPath isCollection:YES itemClass:itemClass];
++ (instancetype)property:(NSString *)property classString:(NSString *)classString toKeyPath:(NSString *)keyPath {
+    return [self withProperty:property classString:classString andKeyPath:keyPath isCollection:NO itemClass:nil];
+}
+
++ (instancetype)collection:(NSString *)property itemClass:(NSString *)itemClass {
+    return [self withProperty:property classString:nil andKeyPath:property isCollection:YES itemClass:itemClass];
 }
 
 
-+ (id)collection:(NSString *)property classString:(NSString *)classString itemClass:(NSString *)itemClass toKeyPath:(NSString *)keyPath {
-   return [self withProperty:property classString:classString andKeyPath:keyPath isCollection:YES itemClass:itemClass];
++ (instancetype)collection:(NSString *)property itemClass:(NSString *)itemClass toKeyPath:(NSString *)keyPath {
+    return [self withProperty:property classString:nil andKeyPath:keyPath isCollection:YES itemClass:itemClass];
+}
+
+
++ (instancetype)collection:(NSString *)property classString:(NSString *)classString itemClass:(NSString *)itemClass toKeyPath:(NSString *)keyPath {
+    return [self withProperty:property classString:classString andKeyPath:keyPath isCollection:YES itemClass:itemClass];
 }
 
 
 #pragma mark -
 
 - (id)applyUserInfo:(id)userInfo {
-   self.userInfo = userInfo;
-   return self;
+    self.userInfo = userInfo;
+    return self;
 }
 
 
-- (id)applyCustomMapper:(id<SFMapper>)customMapper {
-   self.customParser = customMapper;
-   return self;
+- (id)applyCustomMapper:(id <SFMapper>)customMapper {
+    self.customParser = customMapper;
+    return self;
 }
+
++ (instancetype)property:(NSString *)property valueBlock:(id (^)(SFMapping *, id value))valueTransformer {
+    return [[self withProperty:property classString:nil andKeyPath:property isCollection:NO itemClass:nil] applyCustomMapper:[SFBlockBasedMapper mapperWithValueTransformBlock:valueTransformer]];
+}
+
++ (instancetype)property:(NSString *)property keyPath:(NSString *)keypath valueBlock:(id (^)(SFMapping *, id value))valueTransformer {
+    return [[self withProperty:property classString:nil andKeyPath:keypath isCollection:NO itemClass:nil] applyCustomMapper:[SFBlockBasedMapper mapperWithValueTransformBlock:valueTransformer]];
+}
+
 
 @end

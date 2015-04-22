@@ -24,4 +24,27 @@ or
 
 + (id)instanceWithDateFormatter:(NSDateFormatter *)dateFormatter;
 
+
+/*
+ Format  : EEE, dd MMM yyyy HH:mm:ss z
+ locale  : en_US_POSIX
+ Timezone: UTC
+ */
++ (SFDateMapper *)rfc2882DateTimeMapper;
+
+/*
+ Format : yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'
+ locale : en_US_POSIX
+ Timezone: UTC
+ */
++ (SFDateMapper *)rfc3339DateTimeMapper;
+
+/*
+ Format : yyyy-MM-dd'T'HH:mm:ssZZZZZ
+ locale : en_US_POSIX
+ Timezone: Defined by format
+ */
++ (SFDateMapper *)iso8601DateTimeMapper;
+
+
 @end

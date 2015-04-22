@@ -1,7 +1,7 @@
 [
   "-workspace", "SFObjectMapping.xcworkspace",
   "-scheme", "SFObjectMappingTests",
-  "-configuration", "Debug",
+  "-configuration", "Coverage",
   "-sdk", "iphonesimulator8.1",
   "-arch", "i386"
 ]

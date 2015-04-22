@@ -36,14 +36,13 @@
     
     // Class
     if ([attributesString hasPrefix:@"T@\""]) {
-        int commaLocation = [attributesString rangeOfString:@","].location;
+        NSUInteger commaLocation = [attributesString rangeOfString:@","].location;
         NSString *name = [attributesString substringWithRange:NSMakeRange(3, commaLocation - 4)];
         return name;
     }
     
     // Another class
     if ([attributesString hasPrefix:@"@\""]) {
-        int commaLocation = [attributesString rangeOfString:@","].location;
         NSString *name = [attributesString substringWithRange:NSMakeRange(2, attributesString.length - 3)];
         return name;
     }
@@ -51,7 +50,7 @@
     // Structure
     // T{CGRect="origin"{CGPoint="x"f"y"f}"size"{CGSize="width"f"height"f}},N,V_rectProperty
     if ([attributesString hasPrefix:@"T{"]) {
-        int commaLocation = [attributesString rangeOfString:@"="].location;
+        NSUInteger commaLocation = [attributesString rangeOfString:@"="].location;
         NSString *name = [attributesString substringWithRange:NSMakeRange(2, commaLocation - 2 )];
         return name;
     }

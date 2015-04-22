@@ -12,6 +12,10 @@
 #import "SFMapping.h"
 #import "SFMappingRuntime.h"
 #import "SFMapper.h"
+#import "SFNSNumberMapper.h"
+#import "SFNSArrayMapper.h"
+#import "SFBOOLMapper.h"
+#import "SFNSStringMapper.h"
 
 @implementation SFMappingCore
 
@@ -24,27 +28,11 @@ static NSMutableDictionary * _mappers;
 + (void)initialize {
     _mappers = [NSMutableDictionary dictionary];
     
-    // We have a lot of parsers
-    // So we adding parser instance for each parse type
-    // Parser class format is SF<_type_>Mapper
-    // SFNSNumberMapper
-    // SFNSStringMapper
-    // SFBOOLMapper
-    // etc
-    NSArray * parseTypes =
-        @[@"NSNumber",
-            @"NSString",
-            @"NSArray",
-            @"BOOL"];
-    
-    // Adding mapper for each map name
-    for (NSString * parseType in parseTypes) {
-        Class mapperClass = NSClassFromString([NSString stringWithFormat:@"SF%@Mapper", parseType]);
-        id mapperInstance = [mapperClass new];
-        if (mapperInstance) {
-            [self registerMapper:mapperInstance forClass:parseType];
-        }
-    }
+    [self registerMapper:[SFNSNumberMapper new] forClass:@"NSNumber"];
+    [self registerMapper:[SFNSArrayMapper new] forClass:@"NSArray"];
+    [self registerMapper:[SFNSArrayMapper new] forClass:@"NSMutableArray"];
+    [self registerMapper:[SFBOOLMapper new] forClass:@"BOOL"];
+    [self registerMapper:[SFNSStringMapper new] forClass:@"NSString"];
 }
 
 
@@ -82,6 +70,14 @@ static NSMutableDictionary * _mappers;
                 // Resolving by property type
                 if (!propertyClassOrStructName) {
                     propertyClassOrStructName = [SFMappingRuntime typeForProperty:[mapping property] ofClass:[object class]];
+                    
+                    // Handling protocols
+                    if (propertyClassOrStructName) {
+                        NSUInteger openBracketLocation = [propertyClassOrStructName rangeOfString:@"<"].location;
+                        if (openBracketLocation != NSNotFound) {
+                            propertyClassOrStructName = [propertyClassOrStructName substringToIndex:openBracketLocation];
+                        }
+                    }
                     mapping.classString = propertyClassOrStructName;
                 }
                 
@@ -160,6 +156,7 @@ static NSMutableDictionary * _mappers;
     return YES;
 }
 
+#pragma mark - Mapper for class or struct name
 
 + (id <SFMapper>)mapperForTypeName:(NSString *)classOrStructName {
     id <SFMapper> mapper = _mappers[classOrStructName];
@@ -207,7 +204,7 @@ static NSMutableDictionary * _mappers;
     id instance = [objectClass new];
     
     // Applying mappings
-    [instance applyMappingsFromObject:sourceObject];
+    [instance applyMappingsFromObject:sourceObject error:error];
     return instance;
 }
 

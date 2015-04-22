@@ -29,6 +29,24 @@ describe(@"SFDateMapper", ^{
         sut = [TestProperty new];
     });
 
+    context(@"By default", ^{
+        it(@"should be able to create with ISO8601 Date format", ^{
+            SFDateMapper * mapper = [SFDateMapper iso8601DateTimeMapper];
+            [[mapper shouldNot] beNil];
+        });
+
+        it(@"should be able to create with RFC2882 Date format", ^{
+            SFDateMapper * mapper = [SFDateMapper rfc2882DateTimeMapper];
+            [[mapper shouldNot] beNil];
+        });
+
+        it(@"should be able to create with RFC3339 Date format", ^{
+            SFDateMapper * mapper = [SFDateMapper rfc3339DateTimeMapper];
+            [[mapper shouldNot] beNil];
+        });
+
+    });
+
     context(@"When created with factory method", ^{
         beforeEach(^{
             dateMapper = [SFDateMapper instanceWithDateFormatter:dateFormatter];
@@ -160,6 +178,59 @@ describe(@"SFDateMapper", ^{
             });
 
 
+        });
+    });
+
+
+    context(@"When using", ^{
+        __block SFDateMapper * mapper = nil;
+
+        context(@"iso8601DateTimeMapper", ^{
+            beforeEach(^{
+                mapper = [SFDateMapper iso8601DateTimeMapper];
+            });
+            it(@"should parse string to dates passed in correct format", ^{
+                sut = [KWMock nullMockForClass:TestProperty.class];
+                __block id date = nil;
+                [sut stub:@selector(setValue:forKeyPath:) withBlock:^id(NSArray *params) {
+                    date = params[0];
+                    return nil;
+                }];
+                [mapper applyMapping:datePropertyMapping onObject:sut withValue:@"2015-04-22T15:20:11Z" error:nil];
+                [[date shouldNot] beNil];
+            });
+        });
+
+        context(@"rfc2882DateTimeMapper", ^{
+            beforeEach(^{
+                mapper = [SFDateMapper rfc2882DateTimeMapper];
+            });
+            it(@"should parse string to dates passed in correct format", ^{
+                sut = [KWMock nullMockForClass:TestProperty.class];
+                __block id date = nil;
+                [sut stub:@selector(setValue:forKeyPath:) withBlock:^id(NSArray *params) {
+                    date = params[0];
+                    return nil;
+                }];
+                [mapper applyMapping:datePropertyMapping onObject:sut withValue:@"Wed, 22 Apr 2015 15:20:11 GMT" error:nil];
+                [[date shouldNot] beNil];
+            });
+        });
+
+        context(@"rfc3339DateTimeMapper", ^{
+            beforeEach(^{
+                mapper = [SFDateMapper rfc3339DateTimeMapper];
+            });
+            it(@"should parse string to dates passed in correct format", ^{
+                sut = [KWMock nullMockForClass:TestProperty.class];
+                __block id date = nil;
+                [sut stub:@selector(setValue:forKeyPath:) withBlock:^id(NSArray *params) {
+                    date = params[0];
+                    return nil;
+                }];
+                [mapper applyMapping:datePropertyMapping onObject:sut withValue:@"2015-04-22T15:20:11Z" error:nil];
+                [[date shouldNot] beNil];
+            });
         });
     });
 

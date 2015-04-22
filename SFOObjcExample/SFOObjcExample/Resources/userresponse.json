@@ -1,0 +1,10 @@
+{
+  "statusCode":2,
+  "message":"User is OK",
+
+  "User": {
+    "gender":"male",
+    "name":"Artur",
+    "type":"premium"
+  }
+}

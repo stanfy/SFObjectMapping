@@ -14,7 +14,7 @@
 
 
 /**
- Perform bindings from specified XML |element| to |objinstance|
+ Perform bindings from specified source object |object| to |objinstance|
  */
 + (BOOL)applyMappingsOnObject:(id)objinstance fromObject:(id)object;
 + (BOOL)applyMappingsOnObject:(id)objinstance fromObject:(id)object error:(NSError **)errors;
