@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1737C3165DA710D19D09F179 /* SFUserResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CF6F03E8FFE652658C3D /* SFUserResponse.m */; };
+		1737CAD58088B1B0B555D294 /* userresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 1737CC8BD8727CC70BE8DA56 /* userresponse.json */; };
+		1737CB2D21D47C0E02100F24 /* SFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C0ADD02A9F7F267534EC /* SFUser.m */; };
 		1737CB374353030E7513AF3E /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 1737CFBB07FC16D932DEAFF7 /* response.json */; };
 		1737CC935CE67790182F05A0 /* SFBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C63AD38DE46C43EA01CD /* SFBaseResponse.m */; };
 		1737CEDB33DFB40A0CA2684A /* ApplicationCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C3E76B8D42CCADAC47C4 /* ApplicationCore.m */; };
@@ -52,10 +55,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1737C0ADD02A9F7F267534EC /* SFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUser.m; sourceTree = "<group>"; };
+		1737C11FFA6FB0A89867A7F0 /* SFUserResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserResponse.h; sourceTree = "<group>"; };
 		1737C3E76B8D42CCADAC47C4 /* ApplicationCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationCore.m; sourceTree = "<group>"; };
+		1737C4E1D69F7DBE3682EBF4 /* SFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUser.h; sourceTree = "<group>"; };
 		1737C63AD38DE46C43EA01CD /* SFBaseResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBaseResponse.m; sourceTree = "<group>"; };
 		1737CC836FB34E35D9CC4AB2 /* ApplicationCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationCore.h; sourceTree = "<group>"; };
+		1737CC8BD8727CC70BE8DA56 /* userresponse.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = userresponse.json; sourceTree = "<group>"; };
 		1737CD99C19CE65D8A58CC4F /* SFBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBaseResponse.h; sourceTree = "<group>"; };
+		1737CF6F03E8FFE652658C3D /* SFUserResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUserResponse.m; sourceTree = "<group>"; };
 		1737CFBB07FC16D932DEAFF7 /* response.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = response.json; sourceTree = "<group>"; };
 		7310BD861AE5299B00D928CF /* SFOObjcExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFOObjcExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7310BD8A1AE5299B00D928CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,6 +114,10 @@
 			children = (
 				1737C63AD38DE46C43EA01CD /* SFBaseResponse.m */,
 				1737CD99C19CE65D8A58CC4F /* SFBaseResponse.h */,
+				1737CF6F03E8FFE652658C3D /* SFUserResponse.m */,
+				1737C11FFA6FB0A89867A7F0 /* SFUserResponse.h */,
+				1737C0ADD02A9F7F267534EC /* SFUser.m */,
+				1737C4E1D69F7DBE3682EBF4 /* SFUser.h */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -114,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				1737CFBB07FC16D932DEAFF7 /* response.json */,
+				1737CC8BD8727CC70BE8DA56 /* userresponse.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -306,6 +319,7 @@
 				7310BD9A1AE5299B00D928CF /* LaunchScreen.xib in Resources */,
 				7310BD971AE5299B00D928CF /* Images.xcassets in Resources */,
 				1737CB374353030E7513AF3E /* response.json in Resources */,
+				1737CAD58088B1B0B555D294 /* userresponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +342,8 @@
 				7310BD8C1AE5299B00D928CF /* main.m in Sources */,
 				1737CC935CE67790182F05A0 /* SFBaseResponse.m in Sources */,
 				1737CEDB33DFB40A0CA2684A /* ApplicationCore.m in Sources */,
+				1737C3165DA710D19D09F179 /* SFUserResponse.m in Sources */,
+				1737CB2D21D47C0E02100F24 /* SFUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

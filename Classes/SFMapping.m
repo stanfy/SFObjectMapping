@@ -58,6 +58,11 @@
     return [self withProperty:property classString:nil andKeyPath:property isCollection:NO itemClass:nil];
 }
 
++ (instancetype)property:(NSString *)property classString:(NSString *)classString {
+    return [self withProperty:property classString:classString andKeyPath:property isCollection:NO itemClass:nil];
+}
+
+
 + (instancetype)property:(NSString *)property toKeyPath:(NSString *)keyPath {
     return [self withProperty:property classString:nil andKeyPath:keyPath isCollection:NO itemClass:nil];
 }
@@ -91,11 +96,11 @@
     return self;
 }
 
-+ (instancetype)property:(NSString *)property valueBlock:(id (^)(SFMapping *, id))valueTransformer {
++ (instancetype)property:(NSString *)property valueBlock:(id (^)(SFMapping *, id value))valueTransformer {
     return [[self withProperty:property classString:nil andKeyPath:property isCollection:NO itemClass:nil] applyCustomMapper:[SFBlockBasedMapper mapperWithValueTransformBlock:valueTransformer]];
 }
 
-+ (instancetype)property:(NSString *)property keyPath:(NSString *)keypath valueBlock:(id (^)(SFMapping *, id))valueTransformer {
++ (instancetype)property:(NSString *)property keyPath:(NSString *)keypath valueBlock:(id (^)(SFMapping *, id value))valueTransformer {
     return [[self withProperty:property classString:nil andKeyPath:keypath isCollection:NO itemClass:nil] applyCustomMapper:[SFBlockBasedMapper mapperWithValueTransformBlock:valueTransformer]];
 }
 

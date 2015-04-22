@@ -22,7 +22,7 @@
     return self;
 }
 
-+ (instancetype)mapperWithValueTransformBlock:(id (^)(SFMapping *maping, id value))valueTransformBlock {
++ (instancetype)mapperWithValueTransformBlock:(id (^)(SFMapping *mapping, id value))valueTransformBlock {
     return [[self alloc] initWithValueTransformBlock:valueTransformBlock];
 }
 

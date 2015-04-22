@@ -9,6 +9,8 @@
 #import <SFObjectMapping/SFMappingCore.h>
 #import "ViewController.h"
 #import "SFBaseResponse.h"
+#import "SFUserResponse.h"
+#import "SFUser.h"
 
 @interface ViewController ()
 
@@ -32,6 +34,20 @@
     NSAssert([response.message isEqualToString:@"OK"], @"Response mesage should be correclty mapped");
     NSLog(@"Successfully parsed %@ %@", NSStringFromClass(response.class), response);
 
+
+    // User response
+    response = [self parseResponseOfClass:SFUserResponse.class fromResouce:@"userresponse.json"];
+    NSAssert(response, @"Response should be parsed and correctly mapped");
+    NSAssert(response.statusCode == 2, @"Response status code should be correclty mapped");
+    NSAssert([response.message isEqualToString:@"User is OK"], @"Response mesage should be correclty mapped");
+
+    SFUserResponse * userResponse = (SFUserResponse *) response;
+    NSAssert(userResponse.user, @"Response should have user");
+    NSAssert(userResponse.user.gender == SFUserGenderMale, @"User should have correct gender");
+    NSAssert(userResponse.user.userType == SFUserTypePremium, @"User should have correct type");
+    NSAssert([userResponse.user.name isEqualToString:@"Artur"], @"User should have correct name");
+
+    NSLog(@"Successfully parsed %@ %@", NSStringFromClass(response.class), response);
 
 
 }

@@ -28,6 +28,13 @@ Property class is determined at runtime
 + (instancetype)property:(NSString *)property;
 
 /**
+Creates binding information for |property| name to |property| keypath
+Property class is determined at runtime
+@return SFMapping
+*/
++ (instancetype)property:(NSString *)property classString:(NSString *)classString;
+
+/**
  Creates binding information for |property| name to |keyPath|
  Property class is determined at runtime
  @return SFMapping
@@ -81,12 +88,12 @@ Property class is determined at runtime
 Map property with |property| name to the values from the object with the same keypath name, transformed with specified block
  obj.property = transform(source.property)
  */
-+ (instancetype)property:(NSString *)property valueBlock:(id (^)(SFMapping *, id))valueTransformer;
++ (instancetype)property:(NSString *)property valueBlock:(id (^)(SFMapping * mapping, id value))valueTransformer;
 
 /*
 Map property with |property| name to the values from the object with the same keypath name, transformed with specified block
  obj.property = transform(source.keypath)
  */
-+ (instancetype)property:(NSString *)property keyPath:(NSString *)keypath valueBlock:(id (^)(SFMapping *, id))valueTransformer;
++ (instancetype)property:(NSString *)property keyPath:(NSString *)keypath valueBlock:(id (^)(SFMapping * mapping, id value))valueTransformer;
 
 @end

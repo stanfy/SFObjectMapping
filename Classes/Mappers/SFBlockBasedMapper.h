@@ -28,7 +28,7 @@ Block that is responsible for transforming specified |value| to some transformed
 /*
  Creates block based mapper with specified transform block
  */
-+ (instancetype)mapperWithValueTransformBlock:(id (^)(SFMapping *maping, id value))valueTransformBlock;
++ (instancetype)mapperWithValueTransformBlock:(id (^)(SFMapping *mapping, id value))valueTransformBlock;
 
 
 @end
