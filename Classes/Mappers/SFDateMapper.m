@@ -48,5 +48,48 @@
 
 }
 
+#pragma mark - Base date mappers
+
++ (SFDateMapper *)rfc2882DateTimeMapper {
+    static dispatch_once_t once;
+    static SFDateMapper * mapper;
+    dispatch_once(&once, ^{
+        NSDateFormatter *formatter = [self _formatterWithDateFormat:@"EEE, dd MMM yyyy HH:mm:ss z"];
+        mapper = [SFDateMapper instanceWithDateFormatter:formatter];
+    });
+    return mapper;
+}
+
++ (SFDateMapper *)rfc3339DateTimeMapper {
+    static dispatch_once_t once;
+    static SFDateMapper * mapper;
+    dispatch_once(&once, ^{
+        NSDateFormatter *formatter = [self _formatterWithDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+        mapper = [SFDateMapper instanceWithDateFormatter:formatter];
+    });
+    return mapper;
+}
+
++ (SFDateMapper *)iso8601DateTimeMapper {
+    static dispatch_once_t once;
+    static SFDateMapper * mapper;
+    dispatch_once(&once, ^{
+        NSDateFormatter *formatter = [self _formatterWithDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+        mapper = [SFDateMapper instanceWithDateFormatter:formatter];
+    });
+    return mapper;
+}
+
+
++ (NSDateFormatter *)_formatterWithDateFormat:(NSString *)dateFormat {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUSPOSIXLocale];
+    [formatter setDateFormat:dateFormat];
+    [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    return formatter;
+}
+
+
 
 @end
