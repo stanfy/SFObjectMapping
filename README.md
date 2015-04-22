@@ -193,92 +193,72 @@ In case, if mapping found, then those will be applied correctly
 
 Dates
 -----
-There are 2 ways for parsing date (usually it's date string from server in any ISO format like `yyyy-MM-dd HH:mm:ss`):
- 
-1. parse to string, then convert it to date 
-2. create custom mapper.
-
-
-#### Parse NSDate into String, then translate into NSDate
-
-
-in .h file create date property:
-
+For parsing dates we're suggesting to use `SFDateMapper` class  
+You can use from predefined mappers with some general date formats:  
 ```objc
-@property (nonatomic, strong) NSDate * date;
-```
-
-in class extension create inner (private) string property:
-
-```objc
-@property (nonatomic, strong) NSString * stringDate;
-```
-
-mapping string to string:
-
-```objc
-[SFMapping property:@"stringDate" toKeyPath:@"dateFromDictionary"]
-```
-
-transform string to date:
-
-```
-- (NSString *)date {
-    if (!_date) {
-	    NSDateFormatter *formatter = [NSDateFormatter new];
-      	[formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    	_date = [formatter dateFromString:_stringDate];
-    }
-    return _date;
-}
-```
-
-
-#### Create custom date mapper and apply it in mapping
-
-in .h file create date property:
-
-```objc
-@property (nonatomic, strong) NSDate * date;
-```
-
-mapping parse date string from dictionary already into NSDate:
-
-```objc
- [[SFMapping property:@"date" toKeyPath:@"dateFromDictionary"] applyCustomMapper:[SMDateMapper sharedInstance]],
-```
-
-custom date mapper (successor of SFDateMapper):
-
-```objc
-@interface SMDateMapper : SFDateMapper
+/*
+ Format  : EEE, dd MMM yyyy HH:mm:ss z
+ locale  : en_US_POSIX
+ Timezone: UTC
+ */
++ (SFDateMapper *)rfc2882DateTimeMapper;
 
 /*
-Returns fully initialized Date mapper with
-yyyy-MM-dd HH:mm:ss Z format
+ Format : yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'
+ locale : en_US_POSIX
+ Timezone: UTC
  */
-+ (SMDateMapper *)sharedInstance;
++ (SFDateMapper *)rfc3339DateTimeMapper;
 
-
-@end
+/*
+ Format : yyyy-MM-dd'T'HH:mm:ssZZZZZ
+ locale : en_US_POSIX
+ Timezone: Defined by format
+ */
++ (SFDateMapper *)iso8601DateTimeMapper;
 ```
-
+or, if you want to create your own, you can create your own mapper for your own, proprietary date format.  
 ```objc
-
-@implementation SMDateMapper
-
-+ (SMDateMapper *)sharedInstance {
-   static SMDateMapper * _instance = nil;
-   static dispatch_once_t onceToken;
-   
-   dispatch_once(&onceToken, ^{
-      NSDateFormatter * dateFormatter = [SFDateFormatterUtils dateFormatterWithFormat:@"yyyy-MM-dd HH:mm:ss" andLocale:@"en_US_POSIX"];
-      dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
-      _instance = [[self class] instanceWithDateFormatter:dateFormatter];
-   });
-   
-   return _instance;
+// Mapper for dates in timestamp(seconds since 1970) format
++ (id<SFMapper>)timestampMapper {
+    static dispatch_once_t once;
+    static id<SFMapper> mapper;
+    dispatch_once(&once, ^{
+        mapper = [SFBlockBasedMapper mapperWithValueTransformBlock:^id(SFMapping *mapping, id value) {
+            return [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
+        }];
+    });
+    return mapper;
 }
 
-@end
+// Mapper for dates in timestamp("/Date(1302055696487)/") format
++ (id<SFMapper>)dotNetTimestampMapper {
+    static dispatch_once_t once;
+    static id<SFMapper> mapper;
+    dispatch_once(&once, ^{
+        static NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@"/Date()/"];
+        mapper = [SFBlockBasedMapper mapperWithValueTransformBlock:^id(SFMapping *mapping, id value) {
+            NSString *stringWithTimeStamp = [value stringByTrimmingCharactersInSet:characterSet];
+            return [NSDate dateWithTimeIntervalSince1970:[stringWithTimeStamp doubleValue]];
+        }];
+    });
+    return mapper;
+}
+```
+#### When date mapper is chosen  
+Once you have date mapper, whether it's `SFDateMapper` subclass, or some custom implementation, you, generally have two ways of using it - registering it's as global mapper for `NSDate` class, or setting it as custom mapper to mappings you want:  
+```objc
+// Since we know that all dates will be in rfc2882 format,
+// We just set global mapper on NSDate class
+[SFMappingCore registerMapper:[SFDateMapper rfc2882DateTimeMapper] forClass:@"NSDate"];
+
+[SFActivity setSFMappingInfo:
+    // Mapping date by using global date mapper
+    [SFMapping property:@"date"],
+
+    // Just in case if we need to map this property differently, we can use custom mapper
+    //[[SFMapping property:@"date"] applyCustomMapper:[SFDateMapper rfc3339DateTimeMapper]],
+    nil
+];
+}
 ```
