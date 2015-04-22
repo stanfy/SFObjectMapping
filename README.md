@@ -34,24 +34,20 @@ in `SFBaseObject.h`:
 
 
 ```objc
-#import "NSObject+SFMapping.h"
-
 @interface SFBaseObject : NSObject
-
 @property (nonatomic, strong) NSString * ID;
-
 @end
 ```
 
-in `SFBaseObject.m` add initialize method with mapping in format `property name` - `key path`:
+somewhere in your code where it's more appropriate for you setup mapping for `SFBaseObject` in format `property name` - `key path`:
 
 ```objc
-+ (void)initialize {
-    if (self == [SFBaseObject class]) {
-        [self setSFMappingInfo:
-         [SFMapping property:@"ID" toKeyPath:@"id"],
-         nil];
-    }
+#import "SFMapping.h"
+#import "NSObject+SFMapping.h"
++ (void)setupMappingsForModelObjects {
+    [SFBaseObject setSFMappingInfo:
+      [SFMapping property:@"ID" toKeyPath:@"id"],
+    nil];
 }
 ```
 
@@ -69,41 +65,42 @@ Lets look on mapping for different simple properties:
 Mapping:
 
 ```objc
-+ (void)initialize {
-    if (self == [SFBaseObject class]) {
-        [self setSFMappingInfo:
-            [SFMapping property:@"pString" toKeyPath:@"someStringFromDictionary"],
-            [SFMapping property:@"pNumber" toKeyPath:@"someNumberFromDictionary"],
-            [SFMapping property:@"pBoolean" toKeyPath:@"someBooleanFromDictionary"],
-        nil];
-    }
+#import "SFMapping.h"
+#import "NSObject+SFMapping.h"
++ (void)setupMappingsForModelObjects {
+    [SFBaseObject setSFMappingInfo:
+	[SFMapping property:@"pString" toKeyPath:@"someStringFromDictionary"],
+        [SFMapping property:@"pNumber" toKeyPath:@"someNumberFromDictionary"],
+        [SFMapping property:@"pBoolean" toKeyPath:@"someBooleanFromDictionary"],  
+    nil];
 }
 ```
 
 Arrays
 ------
 
-If object has array of `SFArrayItem` objects:
+If `SFObjectWithArray` has array of `SFArrayItem` objects:
 
 ```objc
+@interface SFObjectWithArray : NSObject
 @property (nonatomic, strong) NSMutableArray * mutableArray;
 @property (nonatomic, strong) NSMutableArray * immutableArray;
-
+@end
 ```
 
 Mapping:
 
 ```objc
-+ (void)initialize {
-    if (self == [SFObjectWithArray class]) {
-        [self setSFMappingInfo:
+#import "SFMapping.h"
+#import "NSObject+SFMapping.h"
++ (void)setupMappingsForModelObjects {
+        [SFObjectWithArray setSFMappingInfo:
          [SFMapping collection:@"mutableArray" classString:@"NSMutableArray" 
             itemClass:@"SFArrayItem" toKeyPath:@"someMutableArrayFromDictionary"],         
          [SFMapping collection:@"immutableArray" classString:@"NSArray" 
             itemClass:@"SFArrayItem" toKeyPath:@"someArrayFromDictionary"],
          nil];
-    }
-}
+ }
 ```
 
 Objects
@@ -118,14 +115,15 @@ If object has reference to `SFAnotherObject`:
 Mapping:
 
 ```objc
-+ (void)initialize {
-    if (self == [SFBaseObject class]) {
-        [self setSFMappingInfo:
++ (void)setupMappingsForModelObjects {
+    [SFBaseObject setSFMappingInfo:
          [SFMapping property:@"anotherObject" toKeyPath:@"someObjectKeyPath"],
-         nil];
-    }
+    nil];
 }
 ```
+In this case, mapper will try to created `SFAnotherObject` and apply mappings to it, by provided rules.  
+If there's no mappings found for `SFAnotherObject` then, empty object will be created `[SFAnotherObject new]`  
+In case, if mapping found, then those will be applied correctly  
 
 Dates
 -----
