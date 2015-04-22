@@ -105,9 +105,30 @@ Mapping:
 
 Enums
 -------
+```objc
+typedef NS_ENUM(NSInteger , SFUserGender) {
+    SFUserGenderFemale = 0,
+    SFUserGenderMale = 1
+};
+
+typedef NS_ENUM(NSInteger , SFUserType) {
+    SFUserTypeNormal= 0,
+    SFUserTypePremium = 1
+};
+
+@interface SFUser : NSObject
+@property(nonatomic, assign) SFUserGender gender;
+@property(nonatomic, assign) SFUserType userType;
+@property(nonatomic, copy) NSString * name;
+@end
+```  
+
 There's two suggested variants how you can map properties.  
 First one is to register global mapper with fake classname   
 Second one is to use custom mapper right in the mapping definition  
+
+Mapping #1. Using global mapper:  
+
 ```objc
 /*
 Register global mapper for all types of SFUserGender
@@ -117,26 +138,30 @@ NSDictionary *userGenderDictionary =
         @"male" : @(SFUserGenderMale)
     };
 
-NSDictionary *userTypeDictionary =
-    @{@"premium" : @(SFUserTypePremium),
-        @"normal" : @(SFUserTypeNormal)
-    };
-    
 // Registering mapper for fake class named SFUserGender
 [SFMappingCore registerMapper:
     [SFBlockBasedMapper mapperWithValueTransformBlock:^id(SFMapping *mapping, id value) {
         return value ? userGenderDictionary[value] : nil;
     }] forClass:@"SFUserGender"];
 
-
 [SFUser setSFMappingInfo:
-    // Simple mapping
-    [SFMapping property:@"name"],
-
     // Here we're specifying this property "class", since we registered global mapper for this class previously
     [SFMapping property:@"gender" classString:@"SFUserGender"],       // gender in JSON
+    // ....
+    nil
+];
+```
+Mapping #2. Using cutom mapper:  
 
-    // Here we're specifying custom mapper which is used only for this mapping
+```objc
+NSDictionary *userTypeDictionary =
+    @{@"premium" : @(SFUserTypePremium),
+        @"normal" : @(SFUserTypeNormal)
+    };
+
+[SFUser setSFMappingInfo:
+    // ,,, 
+    // Here we're specifying local mapper which is used only for this mapping
     [SFMapping property:@"userType" keyPath:@"type" valueBlock:^id(SFMapping *mapping, id value) {
        return value ? userTypeDictionary[value] : nil;;
     }],
