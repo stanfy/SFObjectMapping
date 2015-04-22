@@ -269,6 +269,73 @@ describe(@"SFMappingCore", ^{
 
     });
 
+
+    context(@"when created value transformer", ^{
+        __block SFMapping * mapping;
+        __block SFMapping * mapping2;
+
+        __block id (^stringTransformerBlock)(SFMapping *, id);
+        __block id (^arrayTransformerBlock)(SFMapping *, id);
+        beforeEach(^{
+
+            mapping = [SFMapping property:@"" valueBlock:nil];
+            mapping2 = [SFMapping property:@"" keyPath:@"" valueBlock:nil];
+        });
+        it(@"should create valid mapping", ^{
+            [[mapping shouldNot] beNil];
+            [[mapping2 shouldNot] beNil];
+        });
+
+
+        context(@"And mapping performed", ^{
+            __block BOOL stringTransformerBlockCalled = NO;
+            __block BOOL arrayTransformerBlockCalled = NO;
+
+
+            __block id stringPropertySourceValue = nil;
+            __block id arrayPropertySourceValue = nil;
+
+            beforeEach(^{
+                stringTransformerBlock = ^id(SFMapping * map, id value) {
+                    stringTransformerBlockCalled = YES;
+                    stringPropertySourceValue = value;
+                    return @"1";
+                };
+
+                arrayTransformerBlock = ^id(SFMapping * map, id value) {
+                    arrayTransformerBlockCalled = YES;
+                    arrayPropertySourceValue = value;
+                    return @[@1,@2,@3];
+                };
+
+                [TestProperty setSFMappingInfo:
+                    [SFMapping property:@"stringProperty" valueBlock:stringTransformerBlock],
+                    [SFMapping property:@"arrayProperty" keyPath:@"keyPath" valueBlock:arrayTransformerBlock],
+                        nil];
+            });
+
+            it(@"should call transformer blocks", ^{
+                TestProperty * result = [SFMappingCore instanceOfClass:TestProperty.class fromObject:@{}];
+                [[theValue(stringTransformerBlockCalled) should] beTrue];
+                [[theValue(arrayTransformerBlockCalled) should] beTrue];
+            });
+
+            it(@"should call transformer blocks with values from source object prop values", ^{
+                TestProperty * result = [SFMappingCore instanceOfClass:TestProperty.class fromObject:@{@"stringProperty" : @"sting", @"keyPath": @"another"}];
+                [[stringPropertySourceValue should] equal:@"sting"];
+                [[arrayPropertySourceValue should] equal:@"another"];
+            });
+
+            it(@"should set values, returned by transformer blocks on destination class", ^{
+                TestProperty * result = [SFMappingCore instanceOfClass:TestProperty.class fromObject:@{@"stringProperty" : @"sting", @"keyPath": @"another"}];
+                [[result.stringProperty should] equal:@"1"];
+                [[result.arrayProperty should] equal:@[@1,@2,@3]];
+            });
+
+
+        });
+    });
+
     afterEach(^{
         [TestProperty setSFMappingInfo:nil];
     });
