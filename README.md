@@ -86,7 +86,7 @@ If `SFObjectWithArray` has array of `SFArrayItem` objects:
 ```objc
 @interface SFObjectWithArray : NSObject
 @property (nonatomic, strong) NSMutableArray * mutableArray;
-@property (nonatomic, strong) NSMutableArray * immutableArray;
+@property (nonatomic, strong) NSArray * immutableArray;
 @end
 ```
 
@@ -97,10 +97,8 @@ Mapping:
 #import "NSObject+SFMapping.h"
 + (void)setupMappingsForModelObjects {
         [SFObjectWithArray setSFMappingInfo:
-         [SFMapping collection:@"mutableArray" classString:@"NSMutableArray" 
-            itemClass:@"SFArrayItem" toKeyPath:@"someMutableArrayFromDictionary"],         
-         [SFMapping collection:@"immutableArray" classString:@"NSArray" 
-            itemClass:@"SFArrayItem" toKeyPath:@"someArrayFromDictionary"],
+         [SFMapping collection:@"mutableArray" itemClass:@"SFArrayItem" toKeyPath:@"someMutableArrayFromDictionary"],   
+         [SFMapping collection:@"immutableArray" itemClass:@"SFArrayItem" toKeyPath:@"someArrayFromDictionary"],
          nil];
  }
 ```
