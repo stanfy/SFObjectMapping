@@ -11,6 +11,8 @@
 #import "SFBaseResponse.h"
 #import "SFUserResponse.h"
 #import "SFUser.h"
+#import "SFUserActivityResponse.h"
+#import "SFActivity.h"
 
 @interface ViewController ()
 
@@ -48,6 +50,26 @@
     NSAssert([userResponse.user.name isEqualToString:@"Artur"], @"User should have correct name");
 
     NSLog(@"Successfully parsed %@ %@", NSStringFromClass(response.class), response);
+
+
+    // User response
+    response = [self parseResponseOfClass:SFUserActivityResponse.class fromResouce:@"useractivityresponse.json"];
+    NSAssert(response, @"Response should be parsed and correctly mapped");
+    NSAssert(response.statusCode == 3, @"Response status code should be correclty mapped");
+    NSAssert([response.message isEqualToString:@"User activities is OK"], @"Response mesage should be correclty mapped");
+
+    SFUserActivityResponse * activityResponse = (SFUserActivityResponse *) response;
+    NSAssert(activityResponse.activities, @"Activities should be parsed");
+    NSAssert(activityResponse.activities.count == 1, @"top level Activities should be parsed");
+    NSAssert([[activityResponse.activities[0] name] isEqual:@"Sport"], @"top level Activities should be parsed");
+    NSAssert([activityResponse.activities[0] date], @"top level Activities should be parsed");
+
+    NSAssert([[activityResponse.activities[0] subActivities] count] == 2, @"sub Activities should be parsed");
+    NSAssert([[[activityResponse.activities[0] subActivities][1] name] isEqual:@"Swimming"], @"sub Activities should be parsed");
+
+
+    NSLog(@"Successfully parsed %@ %@", NSStringFromClass(response.class), response);
+
 
 
 }

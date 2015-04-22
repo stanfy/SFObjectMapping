@@ -72,6 +72,10 @@
     return [self withProperty:property classString:classString andKeyPath:keyPath isCollection:NO itemClass:nil];
 }
 
++ (instancetype)collection:(NSString *)property itemClass:(NSString *)itemClass {
+    return [self withProperty:property classString:nil andKeyPath:property isCollection:YES itemClass:itemClass];
+}
+
 
 + (instancetype)collection:(NSString *)property itemClass:(NSString *)itemClass toKeyPath:(NSString *)keyPath {
     return [self withProperty:property classString:nil andKeyPath:keyPath isCollection:YES itemClass:itemClass];

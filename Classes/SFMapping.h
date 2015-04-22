@@ -50,6 +50,14 @@ Property class is determined at runtime
 + (instancetype)property:(NSString *)property classString:(NSString *)classString toKeyPath:(NSString *)keyPath;
 
 
+
+/**
+Binds collection |property|(NSArray, NSSet) with items of |itemClass| to |keyPath|
+Collection property class is determined at runtime
+@return SFMapping
+*/
++ (instancetype)collection:(NSString *)property itemClass:(NSString *)itemClass;
+
 /**
  Binds collection |property|(NSArray, NSSet) with items of |itemClass| to |keyPath|
  Collection property class is determined at runtime

@@ -1,0 +1,38 @@
+{
+  "statusCode":3,
+  "message":"User activities is OK",
+
+  "User": {
+    "gender":"male",
+    "name":"Artur",
+    "type":"premium"
+  },
+
+  "activities": [{
+     "name":"Sport",
+     "date":"Wed, 22 Apr 2015 15:20:11 GMT",
+     "children": [
+       {
+         "name":"Running",
+         "date":"Wed, 22 Apr 2015 15:20:11 GMT",
+         "children": [
+           {
+             "name":"Morning run",
+             "date":"Wed, 22 Apr 2015 15:20:11 GMT"
+           }
+         ]
+       },
+       {
+         "name":"Swimming",
+         "date":"Wed, 22 Apr 2015 15:20:11 GMT",
+         "children": [
+           {
+             "name":"Evening swim",
+             "date":"Wed, 22 Apr 2015 15:20:11 GMT",
+             "children": null
+           }
+         ]
+       }
+     ]
+  }]
+}

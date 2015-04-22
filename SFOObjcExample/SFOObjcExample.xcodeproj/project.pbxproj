@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1737C3165DA710D19D09F179 /* SFUserResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CF6F03E8FFE652658C3D /* SFUserResponse.m */; };
+		1737C375F3F98386CDCD41F9 /* SFUserActivityResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CB2AA2D7E70CE9B5EF3A /* SFUserActivityResponse.m */; };
+		1737C37A409DE1E430579C5F /* SFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C9B74C2A7FABE37E45DA /* SFUser.m */; };
+		1737C38D06FA9C5830A9C3FF /* SFUserResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C2A7188C60D2F271AE63 /* SFUserResponse.m */; };
+		1737C4BA5AF1573B12329854 /* SFActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737CCCE1AA7D5D86F872DF4 /* SFActivity.m */; };
+		1737C4F4E316CDD6FDC8B14B /* SFBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C1E42795967745B688E1 /* SFBaseResponse.m */; };
+		1737C87DA2FB1E485B4DEB2B /* useractivityresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 1737C54705E6986C2CCFA8F9 /* useractivityresponse.json */; };
 		1737CAD58088B1B0B555D294 /* userresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 1737CC8BD8727CC70BE8DA56 /* userresponse.json */; };
-		1737CB2D21D47C0E02100F24 /* SFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C0ADD02A9F7F267534EC /* SFUser.m */; };
 		1737CB374353030E7513AF3E /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 1737CFBB07FC16D932DEAFF7 /* response.json */; };
-		1737CC935CE67790182F05A0 /* SFBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C63AD38DE46C43EA01CD /* SFBaseResponse.m */; };
 		1737CEDB33DFB40A0CA2684A /* ApplicationCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1737C3E76B8D42CCADAC47C4 /* ApplicationCore.m */; };
 		7310BD8C1AE5299B00D928CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7310BD8B1AE5299B00D928CF /* main.m */; };
 		7310BD8F1AE5299B00D928CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7310BD8E1AE5299B00D928CF /* AppDelegate.m */; };
@@ -55,15 +58,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1737C0ADD02A9F7F267534EC /* SFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUser.m; sourceTree = "<group>"; };
-		1737C11FFA6FB0A89867A7F0 /* SFUserResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserResponse.h; sourceTree = "<group>"; };
+		1737C1E42795967745B688E1 /* SFBaseResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBaseResponse.m; sourceTree = "<group>"; };
+		1737C1F017B0E7D4830FA36C /* SFActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFActivity.h; sourceTree = "<group>"; };
+		1737C2A7188C60D2F271AE63 /* SFUserResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUserResponse.m; sourceTree = "<group>"; };
+		1737C39874EC361EB509ADA2 /* SFUserActivityResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserActivityResponse.h; sourceTree = "<group>"; };
 		1737C3E76B8D42CCADAC47C4 /* ApplicationCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationCore.m; sourceTree = "<group>"; };
-		1737C4E1D69F7DBE3682EBF4 /* SFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUser.h; sourceTree = "<group>"; };
-		1737C63AD38DE46C43EA01CD /* SFBaseResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBaseResponse.m; sourceTree = "<group>"; };
+		1737C54705E6986C2CCFA8F9 /* useractivityresponse.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = useractivityresponse.json; sourceTree = "<group>"; };
+		1737C5949716E7606E64D6CE /* SFBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBaseResponse.h; sourceTree = "<group>"; };
+		1737C9B74C2A7FABE37E45DA /* SFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUser.m; sourceTree = "<group>"; };
+		1737CB2AA2D7E70CE9B5EF3A /* SFUserActivityResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUserActivityResponse.m; sourceTree = "<group>"; };
 		1737CC836FB34E35D9CC4AB2 /* ApplicationCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationCore.h; sourceTree = "<group>"; };
 		1737CC8BD8727CC70BE8DA56 /* userresponse.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = userresponse.json; sourceTree = "<group>"; };
-		1737CD99C19CE65D8A58CC4F /* SFBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBaseResponse.h; sourceTree = "<group>"; };
-		1737CF6F03E8FFE652658C3D /* SFUserResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUserResponse.m; sourceTree = "<group>"; };
+		1737CCCE1AA7D5D86F872DF4 /* SFActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFActivity.m; sourceTree = "<group>"; };
+		1737CD204EF65256FAA0E81B /* SFUserResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserResponse.h; sourceTree = "<group>"; };
+		1737CF3ED74FA1F9AFDFC571 /* SFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUser.h; sourceTree = "<group>"; };
 		1737CFBB07FC16D932DEAFF7 /* response.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = response.json; sourceTree = "<group>"; };
 		7310BD861AE5299B00D928CF /* SFOObjcExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFOObjcExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7310BD8A1AE5299B00D928CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,12 +120,8 @@
 		1737C9050B711A477E3116C1 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				1737C63AD38DE46C43EA01CD /* SFBaseResponse.m */,
-				1737CD99C19CE65D8A58CC4F /* SFBaseResponse.h */,
-				1737CF6F03E8FFE652658C3D /* SFUserResponse.m */,
-				1737C11FFA6FB0A89867A7F0 /* SFUserResponse.h */,
-				1737C0ADD02A9F7F267534EC /* SFUser.m */,
-				1737C4E1D69F7DBE3682EBF4 /* SFUser.h */,
+				1737CD8F91534E0C110D412F /* Model */,
+				1737CC01132E408994CD2B35 /* Responses */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -127,8 +131,33 @@
 			children = (
 				1737CFBB07FC16D932DEAFF7 /* response.json */,
 				1737CC8BD8727CC70BE8DA56 /* userresponse.json */,
+				1737C54705E6986C2CCFA8F9 /* useractivityresponse.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		1737CC01132E408994CD2B35 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				1737CB2AA2D7E70CE9B5EF3A /* SFUserActivityResponse.m */,
+				1737C1E42795967745B688E1 /* SFBaseResponse.m */,
+				1737C5949716E7606E64D6CE /* SFBaseResponse.h */,
+				1737C39874EC361EB509ADA2 /* SFUserActivityResponse.h */,
+				1737C2A7188C60D2F271AE63 /* SFUserResponse.m */,
+				1737CD204EF65256FAA0E81B /* SFUserResponse.h */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		1737CD8F91534E0C110D412F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1737CF3ED74FA1F9AFDFC571 /* SFUser.h */,
+				1737C9B74C2A7FABE37E45DA /* SFUser.m */,
+				1737CCCE1AA7D5D86F872DF4 /* SFActivity.m */,
+				1737C1F017B0E7D4830FA36C /* SFActivity.h */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1737CE49DE2D3C7CD4B9B7F1 /* Libraries */ = {
@@ -320,6 +349,7 @@
 				7310BD971AE5299B00D928CF /* Images.xcassets in Resources */,
 				1737CB374353030E7513AF3E /* response.json in Resources */,
 				1737CAD58088B1B0B555D294 /* userresponse.json in Resources */,
+				1737C87DA2FB1E485B4DEB2B /* useractivityresponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,10 +370,12 @@
 				7310BD921AE5299B00D928CF /* ViewController.m in Sources */,
 				7310BD8F1AE5299B00D928CF /* AppDelegate.m in Sources */,
 				7310BD8C1AE5299B00D928CF /* main.m in Sources */,
-				1737CC935CE67790182F05A0 /* SFBaseResponse.m in Sources */,
 				1737CEDB33DFB40A0CA2684A /* ApplicationCore.m in Sources */,
-				1737C3165DA710D19D09F179 /* SFUserResponse.m in Sources */,
-				1737CB2D21D47C0E02100F24 /* SFUser.m in Sources */,
+				1737C375F3F98386CDCD41F9 /* SFUserActivityResponse.m in Sources */,
+				1737C4F4E316CDD6FDC8B14B /* SFBaseResponse.m in Sources */,
+				1737C38D06FA9C5830A9C3FF /* SFUserResponse.m in Sources */,
+				1737C37A409DE1E430579C5F /* SFUser.m in Sources */,
+				1737C4BA5AF1573B12329854 /* SFActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

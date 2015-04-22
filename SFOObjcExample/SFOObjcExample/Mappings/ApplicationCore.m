@@ -7,10 +7,13 @@
 #import "SFBaseResponse.h"
 #import "SFUserResponse.h"
 #import "SFUser.h"
+#import "SFUserActivityResponse.h"
+#import "SFActivity.h"
 #import <SFObjectMapping/NSObject+SFMapping.h>
 #import <SFObjectMapping/SFMapping.h>
 #import <SFObjectMapping/SFMappingCore.h>
 #import <SFObjectMapping/SFBlockBasedMapper.h>
+#import <SFObjectMapping/SFDateMapper.h>
 
 
 @implementation ApplicationCore {
@@ -69,6 +72,38 @@
         [SFMapping property:@"userType" keyPath:@"type" valueBlock:^id(SFMapping *mapping, id value) {
            return value ? userTypeDictionary[value] : nil;;
         }],
+        nil
+    ];
+
+
+
+    /*
+    Activity response
+     */
+    [SFUserActivityResponse setSFMappingInfo:
+        // Mapping collection of items
+        // Since there's no way to decide which object we should put in array, we specifying it in |itemClass|
+        [SFMapping collection:@"activities" itemClass:@"SFActivity"],
+            nil
+    ];
+
+    // Since we know that all dates will be in rfc2882 format,
+    // We just set global mapper on NSDate class
+    [SFMappingCore registerMapper:[SFDateMapper rfc2882DateTimeMapper] forClass:@"NSDate"];
+
+    [SFActivity setSFMappingInfo:
+        // Simple mapping
+        [SFMapping property:@"name"],
+
+        // Mapping date by using global date mapper
+        [SFMapping property:@"date"],
+
+        // Just in case if we need to map this property differently, we can use custom mapper
+        //[[SFMapping property:@"date"] applyCustomMapper:[SFDateMapper rfc3339DateTimeMapper]],
+
+        // Mapping hierarhical activities to |subActivities| property
+        [SFMapping collection:@"subActivities" itemClass:@"SFActivity" toKeyPath:@"children"],
+
         nil
     ];
 }
